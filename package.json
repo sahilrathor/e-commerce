@@ -1,0 +1,24 @@
+{
+  "name": "e-commerce",
+  "author": "Sahil Rathor",
+  "scripts": {
+    "client": "yarn --cwd FE dev",
+    "server": "yarn --cwd BE dev",
+    "build": "yarn --cwd BE install && yarn --cwd FE install && yarn --cwd FE build",
+    "dev": "concurrently \"yarn client\" \"yarn server\"",
+    "start": "yarn --cwd BE start"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "concurrently": "^9.0.1"
+  }
+}
