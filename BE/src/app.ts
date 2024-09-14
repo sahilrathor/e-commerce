@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
+import itemRoutes from "./routes/itemRoutes";
 import connectToDb from "./db/connect.ToDb";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -31,7 +32,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
-
+app.use("/api/items", itemRoutes)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectToDb();
