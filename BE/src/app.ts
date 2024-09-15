@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
 import itemRoutes from "./routes/itemRoutes";
+import cartRoutes from "./routes/cartRoutes";
 import connectToDb from "./db/connect.ToDb";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/items", itemRoutes)
+app.use("/api/cart", cartRoutes)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectToDb();
