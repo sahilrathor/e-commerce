@@ -10,11 +10,6 @@ const update = async (req: Request, res: Response) => {
         return res.status(404).json({ message: "User not found" });
     }
 
-    // const isMatch = await comparePassword(oldPassword, user.password);
-    // if (!isMatch) {
-    //     return res.status(401).json({ message: "Invalid old password" });
-    // }
-
     if (newPassword !== confirmNewPassword) {
         return res.status(401).json({ message: "New password and confirm password do not match" });
     }

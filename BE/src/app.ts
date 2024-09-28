@@ -9,6 +9,7 @@ import connectToDb from "./db/connect.ToDb";
 import path from "path";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import protectRoute from "./middlewares/protectRoute";
 
 dotenv.config({    // must be declared before the app is created
   path: path.resolve(__dirname, "../../.env")
@@ -32,9 +33,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes)
-app.use("/api/users", userRoutes)
-app.use("/api/items", itemRoutes)
-app.use("/api/cart", cartRoutes)
+app.use("/api/users", protectRoute, userRoutes)
+app.use("/api/items", protectRoute, itemRoutes)
+app.use("/api/cart", protectRoute, cartRoutes)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectToDb();

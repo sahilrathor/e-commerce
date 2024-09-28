@@ -17,9 +17,13 @@ const removeCartItem = async (req: Request, res: Response) => {
         }
 
         cart.items.splice(itemIndex, 1);
-        await cart.save();
+        if(cart.items.length === 0) {
+            await Cart.findByIdAndDelete(cart._id);
+        } else {
+            await cart.save();
+        }
 
-        res.status(200).json({ message: "Item removed from cart successfully"});
+        res.status(200).json({ message: "Item removed from cart successfully", cart});
     } catch (error) {
         res.status(500).json({ error: "Failed to remove item from cart" });
     }
