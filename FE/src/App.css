@@ -16,6 +16,10 @@ body {
     align-items: center;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
 #login-container{
     background: url("./login-bg.webp") ;
     background: linear-gradient( #00000055, white), url("./login-bg.webp") ;

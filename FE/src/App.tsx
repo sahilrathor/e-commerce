@@ -7,7 +7,7 @@ import {  Routes, Route } from 'react-router-dom'
 
 export default function App() {
   return (
-    <div className="w-full h-[100dvh] center-items">
+    <div className="w-full min-h-[100dvh] bg-gray-100 pb-20 center-items">
       <Navbar />
       <Routes>
         <Route path='/auth' element={<Auth />} />

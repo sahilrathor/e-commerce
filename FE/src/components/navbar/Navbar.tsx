@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import PrimaryBtn from '../buttons/PrimaryBtn'
 import OutlineBtn from '../buttons/OutlineBtn'
-import { WishlistIcon, ShoppingCartIcon, UserIcon } from '../../utils/icons';
+import { WishlistIcon, ShoppingCartIcon } from '../../utils/icons';
 import { MdSearch } from "react-icons/md";
 import logo from '../../assets/logo.png';
 import Menu from './Menu';
+import UserProfileBtn from '../buttons/UserProfileBtn';
 
 
 const Navbar: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const userName = 'Sahil';
   const [search, setSearch] = useState('');
   const iconSize = 24;
 
@@ -33,9 +33,10 @@ const Navbar: React.FC = () => {
 
 
 
+
   return (
     <div className='absolute top-0 left-0 right-0 z-50'>
-      <div className={`w-full h-14 mt-0.5 bg-primary text-slate-50 px-10 flex justify-between items-center rounded-b-sm `}>
+      <div className={`w-full h-14 mt-0 bg-primary text-slate-50 px-10 flex justify-between items-center rounded-b-sm `}>
         <h1 className='text-2xl font-semibold flex items-center gap-1'>
           <img src={logo} alt="logo" className='w-9 h-9 drop-shadow-lg' />
           <span className='text-xl font-semibold text-yellow drop-shadow-lg'>TechNova</span>
@@ -53,7 +54,7 @@ const Navbar: React.FC = () => {
             size={20}
             color='gray'
             className='cursor-pointer drop-shadow-lg'
-            onClick={handleSearch}
+          // onClick={handleSearch}
           />
         </form>
 
@@ -78,11 +79,9 @@ const Navbar: React.FC = () => {
           </div>}
 
           {/* User */}
-          {isLogin && <div className='flex items-center gap-1 px-2 py-0.5 border border-white/80 cursor-pointer rounded-md text-white hover:bg-secondary group'
-            onClick={() => setIsLogin(!isLogin)} >
-            <UserIcon size={iconSize} />
-            <span className='text-sm font-semibold hidden group-hover:block'>{userName}</span>
-          </div>}
+          {isLogin &&
+            <UserProfileBtn />
+          }
 
           {/* Login */}
           {!isLogin && <OutlineBtn name='Login' onClick={() => setIsLogin(!isLogin)} />}
