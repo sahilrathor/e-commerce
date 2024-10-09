@@ -1,32 +1,3 @@
-// import axios from 'axios'
-// import { loginData } from '../interfaces/auth';
-
-// const useLogin = async () => {
-//     const apiUrl = 'http://localhost:5000/api/auth/login';
-
-//     const login = async ({userName, password, rememberMe} : loginData) => {
-//         try {
-//             const response = await axios.post(apiUrl, { userName, password, rememberMe });
-//             if (response.status === 200) {
-//                 return response.data;
-//             } else {
-//                 throw new Error('An error occurred during login');
-//             }
-//         } catch (error) {
-//             if (axios.isAxiosError(error)) {
-//                 throw new Error(error.response?.data?.message || 'An error occurred during login');
-//             } else {
-//                 throw new Error('An unexpected error occurred');
-//             }
-//         }
-//     }
-
-//     return login;
-// }
-
-// export default useLogin;
-
-
 import { useState } from 'react';
 import axios from 'axios';
 import {message} from 'antd'
@@ -47,7 +18,7 @@ const useLogin = () => {
             const res = await axios.post(
                 `${apiUrl}/api/auth/login`, 
                 loginData, 
-                { withCredentials: true } // Include cookies if required by the API
+                { withCredentials: true }
             );
 
             const data = res.data;
@@ -55,11 +26,12 @@ const useLogin = () => {
             if (res.status === 200) {
                 message.success('Logged in successfully');
                 console.log(data);
+                return true
             }
 
         } catch (err: any) {
             message.error(err.response?.data?.error || 'An error occurred during login');
-            // console.log(err);
+            return false
         } finally {
             setIsLoading(false); 
         }

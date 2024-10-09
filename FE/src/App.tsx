@@ -4,17 +4,23 @@ import Navbar from './components/navbar/Navbar'
 import Auth from './pages/auth/Auth'
 import Home from './pages/Home'
 import {  Routes, Route } from 'react-router-dom'
-// import myTheme from './utils/myTheme'
+import useLoggedInUser from './stores/loggedInUser'
+
+
 
 export default function App() {
+
+  const authenticated = useLoggedInUser(state => state.authenticated)
+  console.log(authenticated)
+  
   return (
-    <div className="w-full min-h-[100dvh] bg-gray-100 ">
-      <Navbar />
+    <div className="w-full min-h-[100dvh] center-items bg-gray-100 ">
+      {authenticated && <Navbar /> }
       <Routes>
         <Route path='/auth' element={<Auth />} />
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={authenticated ? <Home /> : <Auth />} />
       </Routes>
-      <Footer />
+      {authenticated && <Footer /> }
     </div>
   )
 }

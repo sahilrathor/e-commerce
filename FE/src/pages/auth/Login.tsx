@@ -2,6 +2,7 @@ import React, { MouseEvent, useState } from 'react';
 import { message } from 'antd';
 import { loginData } from '../../interfaces/auth';
 import useLogin from '../../hooks/login';
+import useLoggedInUser from '../../stores/loggedInUser';
 
 interface LoginProps {
     onForgetPassword: () => void;
@@ -33,9 +34,13 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
         }
 
         try {
-            await login(formData); 
+            const response = await login(formData); 
+            if (response) {
+                useLoggedInUser.setState({ authenticated: true });
+            }
         } catch (err) {
             message.error('Login failed');
+            return false
         } finally {
             setFormData({
                 userName: "",
@@ -43,6 +48,7 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
                 rememberMe: false
             });
         }
+        return false
     };
 
     return (
