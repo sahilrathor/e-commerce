@@ -10,13 +10,11 @@ const useLogin = () => {
     const setLoggedInUser = useLoggedInUser(state => state.setAuthenticated);
 
     const login = async (loginData: loginData) => {
-        // Validate input fields
         const success = handleInputErrors(loginData);
         if (!success) return;
 
         setIsLoading(true); 
         try {
-            // Make a POST request using axios
             const res = await axios.post(
                 `${apiUrl}/api/auth/login`, 
                 loginData, 
@@ -28,7 +26,6 @@ const useLogin = () => {
             if (res.status === 200) {
                 message.success('Logged in successfully');
                 setLoggedInUser(data);
-                console.log(data);
                 return true
             }
 

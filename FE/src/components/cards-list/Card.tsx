@@ -3,11 +3,11 @@ import { Item } from '../../interfaces/item'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
-const Card: React.FC<{ item: Item }> = ({ item }) => {  
+const Card: React.FC<{ item: Item }> = ({ item }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/item/${item.id}`)
+    navigate(`/item/${item._id}`)
   }
   return (
     <div className='w-full h-full p-2 rounded-md border border-slate-400 overflow-hidden'
@@ -17,17 +17,17 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
       </div>
       <div className='p-2'>
         <h3 className='text-md font-semibold cursor-pointer'
-        onClick={handleClick}
+          onClick={handleClick}
         >
           {item.name}
         </h3>
-        <Tooltip title={item.description}
+        {/* <Tooltip title={item.description}
           color='#00000077'
         >
           <p className='text-sm text-gray-500'>
             {item.description.length > 50 ? item.description.substring(0, 50) + '...' : item.description}
           </p>
-        </Tooltip>
+        </Tooltip> */}
         <p className='text-md font-semibold text-slate-500'>${item.price}</p>
       </div>
     </div>

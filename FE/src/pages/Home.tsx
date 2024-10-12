@@ -13,7 +13,6 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchItems()
-      console.log(data)
       setItems(data)
     }
     fetchData()
