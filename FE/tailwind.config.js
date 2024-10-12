@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -11,9 +12,16 @@ export default {
         'secondary': '#2B8249',
         'light': '#88C14F',
         'dark': '#007250',
-        'yellow': '#ffde55',
-        'clr4': '#fff',
-        'clr5': '#000',
+        'my-yellow': '#ffde55',
+        'my-white': '#eeeeee',
+        'my-black': '#252525',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '3rem',
+        },
       },
     },
   },
