@@ -10,11 +10,11 @@ import useLoggedInUser from './stores/loggedInUser'
 
 export default function App() {
 
-  const authenticated = useLoggedInUser(state => state.authenticated)
-  console.log(authenticated)
+  // const authenticated = useLoggedInUser(state => state.authenticated)
+  const authenticated = true
   
   return (
-    <div className="w-full min-h-[100dvh] center-items bg-gray-100 ">
+    <div className="w-full min-h-[100dvh] center-items flex-col bg-gray-100 ">
       {authenticated && <Navbar /> }
       <Routes>
         <Route path='/auth' element={<Auth />} />
