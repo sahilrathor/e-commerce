@@ -3,7 +3,6 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 
 export const fetchItems = async (): Promise<Item[]> => {
-    console.log('cookie', Cookies.get('jwt'));
 
     try {
         const response = await axios.get("http://localhost:3000/api/items", {
