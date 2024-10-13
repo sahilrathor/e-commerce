@@ -15,7 +15,7 @@ export default function App() {
   const authenticated = true
   
   return (
-    <div className="w-full min-h-[100dvh] center-items flex-col bg-gray-100 ">
+    <div className="w-full min-h-[100dvh] pt-20 center-items justify-start flex-col bg-gray-100 ">
       {authenticated && <Navbar /> }
       <Routes>
         <Route path='/auth' element={<Auth />} />

@@ -18,9 +18,9 @@ const ProductDetails: React.FC = () => {
         }
     }, [id])
     
-
+    
     return (
-        <div className="container px-10 py-10 pt-0">
+        <div className="container py-8">
             <div className='w-full h-full bg-white p-8 flex gap-8 rounded-xl'>
                 {/* PRODUCT IMAGE */}
                 <div className="w-96 h-96 bg-indigo-500 rounded-lg">

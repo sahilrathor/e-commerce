@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import useItemsStore from "../stores/useItemStore";
 import { useEffect, useState } from "react";
-import { Item, ItemStore } from "../interfaces/item";
+import { Item } from "../interfaces/item";
 import CardsContainer from "../components/cards-list/CardsContainer";
 
 const ProductCategoryPage = () => {
@@ -17,7 +17,7 @@ const ProductCategoryPage = () => {
 
 
     return (
-        <div className="container px-10 py-10 pt-0 mt-24">
+        <div className="container py-8">
             <div className="bg-white p-8 rounded-xl flex justify-between items-center">
                 <h1 className="text-2xl font-semibold">{category}</h1>
                 <button className="bg-indigo-600 text-white px-4 py-2 rounded-md">Filter</button>
