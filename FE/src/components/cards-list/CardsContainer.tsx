@@ -27,7 +27,7 @@ const CardsContainer: React.FC<{ items: Item[], title: string, showFilter?: bool
     }
 
     return (
-        <div className='w-[90%] mt-10 mx-auto bg-white py-5 px-12 rounded-lg flex flex-col gap-5'>
+        <div className='w-full bg-white py-5 px-12 rounded-lg flex flex-col gap-5'>
             {/* HEADER */}
             <div className='flex justify-between items-center'>
                 <h2 className='text-2xl font-semibold text-left mb-3'>

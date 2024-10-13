@@ -16,7 +16,7 @@ const useLogin = () => {
         setIsLoading(true); 
         try {
             const res = await axios.post(
-                `${apiUrl}/api/auth/login`, 
+                `${apiUrl}/auth/login`, 
                 loginData, 
                 { withCredentials: true }
             );

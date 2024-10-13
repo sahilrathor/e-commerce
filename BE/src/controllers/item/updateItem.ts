@@ -17,7 +17,7 @@ const updateItem = async (req: Request, res: Response) => {
         item.price = price;
         item.stock = stock;
         item.image = image;
-        item.category = category;
+        item.category = category.split(',');
 
         await item.save();
 

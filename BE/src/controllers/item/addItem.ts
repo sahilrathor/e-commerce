@@ -15,7 +15,7 @@ const addItem = async (req: Request, res: Response) => {
     }
 
     try {
-        const newItem = await Item.create({name, description, price, stock, image, category});
+        const newItem = await Item.create({name, description, price, stock, image, category: category.split(',')});
         res.status(200).json(newItem);
     } catch (error) {
         res.status(500).json({ error: error });

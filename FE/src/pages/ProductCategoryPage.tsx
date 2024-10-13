@@ -11,17 +11,17 @@ const ProductCategoryPage = () => {
     
 
     useEffect(() => {
-        const sameCategoryItems = list.filter((item: Item) => item.category.toLowerCase() === category?.toLowerCase())
+        const sameCategoryItems = list.filter((item: Item) => item.category.includes(category?.toLowerCase() || ''))
         setFilteredItems(sameCategoryItems)
     }, [list, category])
 
 
     return (
         <div className="container py-8">
-            <div className="bg-white p-8 rounded-xl flex justify-between items-center">
+            {/* <div className="bg-white p-8 rounded-xl flex justify-between items-center">
                 <h1 className="text-2xl font-semibold">{category}</h1>
                 <button className="bg-indigo-600 text-white px-4 py-2 rounded-md">Filter</button>
-            </div>
+            </div> */}
             <CardsContainer title={category || ''} items={filteredItems} showFilter={false} />
         </div>
     )

@@ -47,12 +47,12 @@ const lightBanners: Banner[] = [
         link: '/products/4'
     },
 ];
-const Hero = () => {
+const Hero = ({ height }: { height: number }) => {
 
     const { theme } = useAppInfo();
     const banners = theme === 'light' ? lightBanners : darkBanners;
     return (
-        <div className="hero-container w-5/6 min-h-[500px] mx-auto mt-5 rounded-lg select-none overflow-hidden">
+        <div className="hero-container h-full w-full mx-auto rounded-lg select-none overflow-hidden">
             <Swiper
                 modules={[Autoplay]}
                 spaceBetween={50}
@@ -63,8 +63,8 @@ const Hero = () => {
                 }}
             >
                 {banners.map((banner, index) => 
-                    <SwiperSlide key={index}>
-                        <img src={banner.image} alt="Shopping hero" className='banner-image' />
+                    <SwiperSlide key={index} className={`h-[${height}px] rounded-lg overflow-hidden`}>
+                        <img src={banner.image} alt="Shopping hero" className='banner-image rounded-lg' />
                     </SwiperSlide>
                 )}
             </Swiper>

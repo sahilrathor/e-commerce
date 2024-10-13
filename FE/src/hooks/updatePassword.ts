@@ -10,7 +10,7 @@ const useUpdatePassword = () => {
     const updatePassword = async (updatePasswordData: updatePasswordData) => {
         setIsLoading(true);
         try {
-            const res = await axios.patch(`${apiUrl}/api/auth/updatePassword`, updatePasswordData, { withCredentials: true });
+            const res = await axios.patch(`${apiUrl}/auth/updatePassword`, updatePasswordData, { withCredentials: true });
             const data = res.data;
 
             console.log(data);

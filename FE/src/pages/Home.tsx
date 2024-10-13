@@ -18,11 +18,13 @@ const Home: React.FC = () => {
     fetchData()
   }, [])
 
-
+  const heroHeight = 500;
 
   return (
-    <div className='w-full h-full relative pt-20 '>
-      <Hero />
+    <div className='w-full h-full py-5 px-12 relative flex flex-col gap-10'>
+      <div className={`h-[${heroHeight}px]`}>
+        <Hero height={heroHeight}/>
+      </div>
       <CardsContainer title='Featured Products' items={items} />
     </div>
   )
