@@ -7,7 +7,7 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/item/${item._id}`)
+    navigate(`/product/${item._id}`)
   }
   return (
     <div className='w-full h-fit p-2 rounded-md border border-slate-400 overflow-hidden'

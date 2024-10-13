@@ -5,6 +5,7 @@ import Auth from './pages/auth/Auth'
 import Home from './pages/Home'
 import {  Routes, Route } from 'react-router-dom'
 import useLoggedInUser from './stores/loggedInUser'
+import ProductDetails from './pages/ProductDetails'
 
 
 
@@ -19,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path='/auth' element={<Auth />} />
         <Route path='/' element={authenticated ? <Home /> : <Auth />} />
+        <Route path='/product/:id' element={<ProductDetails />} />
       </Routes>
       {authenticated && <Footer /> }
     </div>

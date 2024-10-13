@@ -14,7 +14,7 @@ const menuItems: MenuItem[] = [
     {
         key: 'home',
         label: 'Home',
-        path: '/home',
+        path: '/',
     },
     {
         key: 'products',
