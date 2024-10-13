@@ -3,7 +3,14 @@ import { Item } from '../../interfaces/item';
 import Card from './Card';
 import PaginationComponent from '../pagination/Pagination';
 
-const CardsContainer: React.FC<{ items: Item[], title: string, showFilter?: boolean }> = ({ items, title, showFilter = true }) => {
+interface CardsContainerProps {
+    items: Item[];
+    title: string;
+    showFilter?: boolean;
+    style?: string;
+}
+
+const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilter = true, style }) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 10;
 
@@ -27,7 +34,7 @@ const CardsContainer: React.FC<{ items: Item[], title: string, showFilter?: bool
     }
 
     return (
-        <div className='w-full bg-white py-5 px-12 rounded-lg flex flex-col gap-5'>
+        <div className={`w-full bg-white py-5 px-12 rounded-lg flex flex-col gap-5 ${style}`}>
             {/* HEADER */}
             <div className='flex justify-between items-center'>
                 <h2 className='text-2xl font-semibold text-left mb-3'>

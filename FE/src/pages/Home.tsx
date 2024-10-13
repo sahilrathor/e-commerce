@@ -25,7 +25,8 @@ const Home: React.FC = () => {
       <div className={`h-[${heroHeight}px]`}>
         <Hero height={heroHeight}/>
       </div>
-      <CardsContainer title='Featured Products' items={items} />
+      <CardsContainer title='Featured Products' items={items} showFilter={false} />
+      {/* <CardsContainer title='Best Sellers' items={items} showFilter={false} /> */}
     </div>
   )
 }
