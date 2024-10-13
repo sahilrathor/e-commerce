@@ -1,11 +1,10 @@
-import { Item } from "../interfaces/item";
 import axios from "axios";
 import Cookies from 'js-cookie';
 
-export const fetchItems = async (): Promise<Item[]> => {
+const fetchItems = async () => {
 
     try {
-        const response = await axios.get("http://localhost:3000/api/items", {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/items`, {
             headers: {
                 Authorization: `Bearer ${Cookies.get('token')}`
             }
@@ -16,3 +15,5 @@ export const fetchItems = async (): Promise<Item[]> => {
         return [];
     }   
 }
+
+export default fetchItems;

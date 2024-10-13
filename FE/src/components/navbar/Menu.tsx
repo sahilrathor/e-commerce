@@ -23,7 +23,7 @@ const menuItems: MenuItem[] = [
             {
                 key: 'products-electronics',
                 label: 'Electronics',
-                path: '/products/electronics',
+                path: '/products/electronic',
             },
             {
                 key: 'products-clothing',

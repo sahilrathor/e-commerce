@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { fetchItems } from '../services/fetchItems'
-import useItemsStore from '../stores/items-store'
+import React, { useEffect } from 'react'
+import fetchItems from '../services/fetchItems'
+import useItemsStore from '../stores/useItemStore'
 import Hero from '../components/hero/Hero'
 import CardsContainer from '../components/cards-list/CardsContainer'
 

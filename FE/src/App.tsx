@@ -4,8 +4,8 @@ import Navbar from './components/navbar/Navbar'
 import Auth from './pages/auth/Auth'
 import Home from './pages/Home'
 import {  Routes, Route } from 'react-router-dom'
-import useLoggedInUser from './stores/loggedInUser'
 import ProductDetails from './pages/ProductDetails'
+import ProductCategoryPage from './pages/ProductCategoryPage'
 
 
 
@@ -21,6 +21,7 @@ export default function App() {
         <Route path='/auth' element={<Auth />} />
         <Route path='/' element={authenticated ? <Home /> : <Auth />} />
         <Route path='/product/:id' element={<ProductDetails />} />
+        <Route path='/products/:category' element={<ProductCategoryPage />} />
       </Routes>
       {authenticated && <Footer /> }
     </div>

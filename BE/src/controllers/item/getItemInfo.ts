@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import Item from '../../models/itemModel';
 
-
 const getItemInfo = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
