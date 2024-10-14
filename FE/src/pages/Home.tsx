@@ -3,6 +3,7 @@ import fetchItems from '../services/fetchItems'
 import useItemsStore from '../stores/useItemStore'
 import Hero from '../components/hero/Hero'
 import CardsContainer from '../components/cards-list/CardsContainer'
+import Partners from '../components/partners/Partners'
 
 
 const Home: React.FC = () => {
@@ -21,12 +22,15 @@ const Home: React.FC = () => {
   const heroHeight = 500;
 
   return (
-    <div className='w-full h-full py-5 px-12 relative flex flex-col gap-10'>
-      <div className={`h-[${heroHeight}px]`}>
-        <Hero height={heroHeight}/>
+    <div className='w-full h-full py-5 relative flex flex-col gap-10'>
+      <div className={`h-[${heroHeight}px] px-12`}>
+        <Hero height={heroHeight} />
       </div>
-      <CardsContainer title='Featured Products' items={items} showFilter={false} />
-      {/* <CardsContainer title='Best Sellers' items={items} showFilter={false} /> */}
+      <div className='px-12'>
+        <CardsContainer title='Featured Products' items={items} showFilter={false} />
+        {/* <CardsContainer title='Best Sellers' items={items} showFilter={false} /> */}
+      </div>
+      <Partners />
     </div>
   )
 }

@@ -48,6 +48,7 @@ const lightBanners: Banner[] = [
     },
 ];
 const Hero = ({ height }: { height: number }) => {
+    console.log(height)
 
     const { theme } = useAppInfo();
     const banners = theme === 'light' ? lightBanners : darkBanners;
@@ -63,7 +64,7 @@ const Hero = ({ height }: { height: number }) => {
                 }}
             >
                 {banners.map((banner, index) => 
-                    <SwiperSlide key={index} className={`h-[${height}px] rounded-lg overflow-hidden`}>
+                    <SwiperSlide key={index} style={{height: `${height}px`}} className={`rounded-lg overflow-hidden`}>
                         <img src={banner.image} alt="Shopping hero" className='banner-image rounded-lg' />
                     </SwiperSlide>
                 )}
