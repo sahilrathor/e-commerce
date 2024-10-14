@@ -6,9 +6,10 @@ import { MdSearch } from "react-icons/md";
 import logo from '../../assets/logo.png';
 import Menu from './Menu';
 import UserProfileBtn from '../buttons/UserProfileBtn';
-
+import { useAppInfo } from '../../stores/app-info';
 
 const Navbar: React.FC = () => {
+  const { name } = useAppInfo()
   const [isLogin, setIsLogin] = useState(true);
   const [search, setSearch] = useState('');
   const iconSize = 24;
@@ -39,7 +40,7 @@ const Navbar: React.FC = () => {
       <div className={`w-full h-14 mt-0 bg-primary text-slate-50 px-10 flex justify-between items-center rounded-b-sm `}>
         <h1 className='text-2xl font-semibold flex items-center gap-1'>
           <img src={logo} alt="logo" className='w-9 h-9 drop-shadow-lg' />
-          <span className='text-xl font-semibold text-yellow drop-shadow-lg'>TechNova</span>
+          <span className='text-xl font-semibold text-yellow drop-shadow-lg'>{name}</span>
         </h1>
 
         {/* Search */}

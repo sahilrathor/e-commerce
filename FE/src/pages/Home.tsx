@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   const heroHeight = 500;
 
   return (
-    <div className='w-full h-full py-5 relative flex flex-col gap-10'>
+    <div id='home' className='w-full h-full py-5 relative flex flex-col gap-10'>
       <div className={`h-[${heroHeight}px] px-12`}>
         <Hero height={heroHeight} />
       </div>

@@ -48,7 +48,6 @@ const lightBanners: Banner[] = [
     },
 ];
 const Hero = ({ height }: { height: number }) => {
-    console.log(height)
 
     const { theme } = useAppInfo();
     const banners = theme === 'light' ? lightBanners : darkBanners;

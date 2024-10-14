@@ -1,7 +1,5 @@
 import { useState } from "react"
 
-
-
 const Partners = () => {
     const [partners, _setPartners ] = useState<string[]>([
         'https://placehold.co/100x50',
