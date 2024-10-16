@@ -7,7 +7,7 @@ interface AppInfo {
 }
 
 export const useAppInfo = create<AppInfo>((set) => ({
-    name: 'TechNova',
+    name: 'UrbanBuy',
     theme: 'dark',
     setTheme: (theme: 'light' | 'dark') => set({ theme }),
 }));

@@ -28,19 +28,27 @@ const Footer = () => {
       </div>
 
       {/* Links */}
-      <div className="links">
-        <ul>
+      <div className="links w-32 font-semibold ">
+        <ul className="flex flex-col gap-1">
           <li>
-            <a href="#home">Home</a>
+            <a href="#home"
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
+            >Home</a>
           </li>
           <li>
-            <a href="/products">Products</a>
+            <a href="/products"
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
+            >Products</a>
           </li>
           <li>
-            <a href="/categories">Categories</a>
+            <a href="/categories"
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
+            >Categories</a>
           </li>
           <li>
-            <a href="/about">About</a>
+            <a href="/about"
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
+            >About</a>
           </li>
         </ul>
       </div>
