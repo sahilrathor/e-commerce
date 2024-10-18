@@ -15,13 +15,11 @@ const ProductCategoryPage = () => {
         setFilteredItems(sameCategoryItems)
     }, [list, category])
 
+    console.log('list', list)
+    console.log('filteredItems', filteredItems)
 
     return (
         <div className="container py-8">
-            {/* <div className="bg-white p-8 rounded-xl flex justify-between items-center">
-                <h1 className="text-2xl font-semibold">{category}</h1>
-                <button className="bg-indigo-600 text-white px-4 py-2 rounded-md">Filter</button>
-            </div> */}
             <CardsContainer title={category || ''} items={filteredItems} />
         </div>
     )

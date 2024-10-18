@@ -1,14 +1,11 @@
 import React from 'react'
 import { Item } from '../../interfaces/item'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
 const Card: React.FC<{ item: Item }> = ({ item }) => {
-  const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate(`/product/${item._id}`)
-  }
+
   return (
     <div className='w-full h-fit p-2 rounded-md border border-slate-400 overflow-hidden'
     >
@@ -16,11 +13,11 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
         <img src={item.image} alt={item.name + 'image'} className='h-full object-cover mx-auto' />
       </div>
       <div className='p-2 flex flex-col gap-1 justify-center'>
-        <h3 className='text-md font-semibold cursor-pointer'
-          onClick={handleClick}
+        <Link to={`/product/${item._id}`}
+          className='w-max text-md font-semibold'
         >
           {item.name}
-        </h3>
+        </Link>
         {item.description && (
           <Tooltip title={item.description}
             color='#00000077'

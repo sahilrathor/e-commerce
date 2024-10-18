@@ -4,45 +4,47 @@ import { useAppInfo } from '../../stores/app-info'
 import UserProfileBtn from '../buttons/UserProfileBtn';
 import { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
-
-const NavLinks = [
-  {
-    name: 'Home',
-    path: '/',
-  },
-  {
-    name: 'Products',
-    // path: '/products',
-    dropdown: [
-      {
-        label: <a href="/products/electronics">Electronics</a>,
-        key: '1',
-      },
-      {
-        label: <a href="/products/clothing">Clothing</a>,
-        key: '2',
-      },
-      {
-        label: <a href="/products/footwear">Footwear</a>,
-        key: '3',
-      },
-      {
-        label: <a href="/products/accessories">Accessories</a>,
-        key: '4',
-      },
-    ],
-  },
-  {
-    name: 'About',
-    path: '/about',
-  },
-]
 
 
 
 const Navbar = () => {
+  const navigate = useNavigate()
   const [search, setSearch] = useState('');
+  
+  const NavLinks = [
+    {
+      name: 'Home',
+      path: '/',
+    },
+    {
+      name: 'Products',
+      // path: '/products',
+      dropdown: [
+        {
+          label: <p onClick={() => navigate('/products/electronics')}>Electronics</p>,
+          key: '1',
+        },
+        {
+          label: <p onClick={() => navigate('/products/clothing')}>Clothing</p>,
+          key: '2',
+        },
+        {
+          label: <p onClick={() => navigate('/products/footwear')}>Footwear</p>,
+          key: '3',
+        },
+        {
+          label: <p onClick={() => navigate('/products/accessories')}>Accessories</p>,
+          key: '4',
+        },
+      ],
+    },
+    {
+      name: 'About',
+      path: '/about',
+    },
+  ]
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -71,14 +73,14 @@ const Navbar = () => {
         <ul className='flex items-center gap-2'>
           {NavLinks.map((item, index) => (
             <li key={index}
-              className='text-sm font-semibold  px-1 py-0.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all duration-300'
+              className='text-sm font-semibold  px-1 py-0.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all duration-300 cursor-pointer'
             >
               {item.dropdown ? (
                 <Dropdown menu={{ items: item.dropdown }} placement="bottomLeft">
                   <span className='cursor-pointer'>{item.name}</span>
                 </Dropdown>
               ) : (
-                <a href={item.path}>{item.name}</a>
+                <p onClick={() => navigate(item.path)}>{item.name}</p>
               )}
             </li>
           ))}

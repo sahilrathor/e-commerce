@@ -34,7 +34,8 @@ export default function App() {
         <Route path='/login' element={authenticated ? <Navigate to="/home" /> : <Auth />} />
         <Route path='/home' element={authenticated ? <Home /> : <Navigate to="/login" />} />
         <Route path='/product/:id' element={authenticated ? <ProductDetails /> : <Navigate to="/login" />} />
-        <Route path='/products/:category' element={authenticated ? <ProductCategoryPage /> : <Navigate to="/login" />} />
+        <Route path='/products/:category' element={<ProductCategoryPage />} />
+        {/* <Route path='/products/:category' element={authenticated ? <ProductCategoryPage /> : <Navigate to="/login" />} /> */}
       </Routes>
       {authenticated && <Footer />}
     </div>
