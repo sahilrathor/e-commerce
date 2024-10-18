@@ -2,7 +2,7 @@ import React, { MouseEvent, useState } from 'react';
 import { message } from 'antd';
 import { loginData } from '../../interfaces/auth';
 import useLogin from '../../hooks/login';
-import useLoggedInUser from '../../stores/loggedInUser';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginProps {
     onForgetPassword: () => void;
@@ -11,6 +11,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
     const { login, isLoading } = useLogin(); 
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState<loginData>({
         userName: "",
@@ -35,8 +36,9 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
 
         try {
             const response = await login(formData); 
+            // console.log(response);
             if (response) {
-                useLoggedInUser.setState({ authenticated: true });
+                navigate('/home');
             }
         } catch (err) {
             message.error('Login failed');

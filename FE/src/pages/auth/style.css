@@ -1,0 +1,13 @@
+#login-bg {
+    background-color: #f0f0f0;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+}
+#login-container {
+    animation: slide-in 0.7s ease-in-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-50%);
+    }
+}

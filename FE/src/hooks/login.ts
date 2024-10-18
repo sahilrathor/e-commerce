@@ -2,12 +2,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import {message} from 'antd'
 import { loginData } from '../interfaces/auth';
-import useLoggedInUser from '../stores/loggedInUser';
+import { setCookie } from '../utils/sessionUtils';
 
 const useLogin = () => {
     const apiUrl = import.meta.env.VITE_API_URL; // Environment variable for the API URL
     const [isLoading, setIsLoading] = useState(false); // Loading state
-    const setLoggedInUser = useLoggedInUser(state => state.setAuthenticated);
+    // const setLoggedInUser = useLoggedInUser(state => state.setAuthenticated);
 
     const login = async (loginData: loginData) => {
         const success = handleInputErrors(loginData);
@@ -25,7 +25,8 @@ const useLogin = () => {
 
             if (res.status === 200) {
                 message.success('Logged in successfully');
-                setLoggedInUser(data);
+                console.log(data);
+                setCookie('Token', data.token);
                 return true
             }
 
