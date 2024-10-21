@@ -58,7 +58,7 @@ const login = async (req: Request, res: Response) => {
     }
 
     // If both user exists and password is correct, generate token and respond
-    generateTokenCookie(user._id.toString(), res, rememberMe);
+    const { token } = generateTokenCookie(user._id.toString(), rememberMe);
     
     return res.status(200).json({
         message: "Login successful",
@@ -67,6 +67,7 @@ const login = async (req: Request, res: Response) => {
             email: user.email,
             gender: user.gender,
         },
+        token
     });
 };
 

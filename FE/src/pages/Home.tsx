@@ -17,7 +17,7 @@ const Home: React.FC = () => {
       const data = await fetchItems()
       setItems(data)
     }
-    fetchData()``
+    fetchData()
   }, [])
 
 
