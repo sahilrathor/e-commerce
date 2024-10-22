@@ -65,13 +65,15 @@ const ProductDetails: React.FC = () => {
 
                     {/* PRODUCT QUANTITY */}
                     <div className='justify-self-end flex items-center gap-2'>
-                        <p className='text-sm text-gray-500'>Set Quantity :</p>
+                        <p className='text-sm text-gray-600 font-semibold'>Set Quantity :</p>
                         <InputNumber min={1} max={maxQuantity} value={quantity} onChange={(value) => setQuantity(value || 1)} />
                     </div>
 
-                    <button className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'>Add to Cart</button>
+                    <div className="flex gap-2">
+                        <button className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'>Add to Cart</button>
 
-                    <button className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'>Buy Now</button>
+                        <button className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'>Buy Now</button>
+                    </div>
 
                     <div className='absolute top-5 right-5 flex  gap-2'>
                         <button className='w-8 h-8 border border-gray-200 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-600'>
@@ -81,6 +83,14 @@ const ProductDetails: React.FC = () => {
                         <button className='w-8 h-8 border border-gray-200 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-600'>
                             <ShareIconOutline size={20} />
                         </button>
+                    </div>
+
+                    {/* seller details */}
+                    <div className='flex gap-2 items-center'>
+                        <p className='text-sm text-gray-600 font-semibold'>Sold By :</p>
+                        <p className='text-sm bg-gray-100 px-2 py-1 rounded-md text-gray-800 font-semibold cursor-pointer'>
+                            UrbanBuy
+                        </p>
                     </div>
                 </div>
             </div>
