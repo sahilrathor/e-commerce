@@ -7,7 +7,7 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
 
 
   return (
-    <div className='w-full h-fit p-2 rounded-md border border-slate-400 overflow-hidden'
+    <div className='w-full h-full p-2 rounded-md border border-slate-400 overflow-hidden'
     >
       <div className='w-full h-40'>
         <img src={item.image} alt={item.name + 'image'} className='h-full object-cover mx-auto' />
@@ -21,6 +21,7 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
         {item.description && (
           <Tooltip title={item.description}
             color='#00000077'
+            placement='rightTop'
           >
             <p className='text-sm text-gray-500'>
               {item.description.length > 50 ? item.description.substring(0, 50) + '...' : item.description}

@@ -24,7 +24,7 @@ const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilte
 
     if (items.length === 0) {
         return (
-            <div className='w-[90%] mt-10 mx-auto bg-gray-100 pt-5 pb-8 px-12 rounded-lg'>
+            <div className={`w-[90%] mt-10 mx-auto bg-gray-100 pt-5 pb-8 px-12 rounded-lg ${style}`}>
                 <h2 className='text-2xl font-semibold text-left mb-3'>
                     {title}
                 </h2>
