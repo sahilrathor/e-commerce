@@ -8,6 +8,8 @@ const Partners = () => {
         'https://placehold.co/100x50',
         'https://placehold.co/100x50',
     ])
+
+
     return (
         <div className='w-full h-32 bg-gray-100 px-12 pb-3 relative flex flex-col '>
             <h1 className='text-lg font-semibold text-center text-slate-800/50'>Partners</h1>

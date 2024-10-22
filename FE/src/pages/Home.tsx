@@ -5,12 +5,15 @@ import Hero from '../components/hero/Hero'
 import CardsContainer from '../components/cards-list/CardsContainer'
 import Partners from '../components/partners/Partners'
 import FeaturedCard from '../components/featured/FeaturedCard'
+import useRecentViewedStore from '../stores/useRecentViewedStore'
 
 
 const Home: React.FC = () => {
 
   const items = useItemsStore(state => state.items)
   const setItems = useItemsStore(state => state.setItems)
+
+  const recentlyViewedItems = useRecentViewedStore(state => state.recentlyViewedItems)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +40,21 @@ const Home: React.FC = () => {
         <CardsContainer title='Featured Products' items={items} showFilter={false} />
         {/* <CardsContainer title='Best Sellers' items={items} showFilter={false} /> */}
       </div>
+      
       <Partners />
+
+      {/* Recently Viewed */}
+      {recentlyViewedItems.length > 0 && (
+      <div className='px-12'>
+          <CardsContainer 
+            title='Recently Viewed' 
+            items={recentlyViewedItems} 
+            showFilter={false} 
+            showPagination={false}
+            style='bg-transparent border border-gray-100'
+          />
+        </div>
+      )}
     </div>
   )
 }

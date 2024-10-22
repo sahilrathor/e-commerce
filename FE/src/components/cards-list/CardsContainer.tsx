@@ -8,9 +8,10 @@ interface CardsContainerProps {
     title: string;
     showFilter?: boolean;
     style?: string;
+    showPagination?: boolean;
 }
 
-const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilter = true, style }) => {
+const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilter = true, style, showPagination = true }) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 10;
 
@@ -49,7 +50,9 @@ const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilte
             </div>
 
             {/* Pagination component */}
-            <PaginationComponent totalItems={items.length} onPageChange={handlePageChange} />
+            {showPagination && (
+                <PaginationComponent totalItems={items.length} onPageChange={handlePageChange} />
+            )}
         </div>
     );
 };
