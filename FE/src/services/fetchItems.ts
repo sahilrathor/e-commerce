@@ -6,7 +6,7 @@ const fetchItems = async () => {
     try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/items`, {
             headers: {
-                Authorization: `Bearer ${Cookies.get('token')}`
+                Authorization: `Bearer ${Cookies.get('Token')}`
             }
         });
         return response.data;

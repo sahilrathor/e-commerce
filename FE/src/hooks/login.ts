@@ -3,8 +3,10 @@ import axios from 'axios';
 import {message} from 'antd'
 import { loginData } from '../interfaces/auth';
 import { setCookie } from '../utils/sessionUtils';
+import { useNavigate } from 'react-router-dom';
 
 const useLogin = () => {
+    const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_API_URL; // Environment variable for the API URL
     const [isLoading, setIsLoading] = useState(false); // Loading state
     // const setLoggedInUser = useLoggedInUser(state => state.setAuthenticated);
@@ -25,8 +27,9 @@ const useLogin = () => {
 
             if (res.status === 200) {
                 message.success('Logged in successfully');
-                console.log(data);
+                // console.log(data);
                 setCookie('Token', data.token);
+                navigate('/');
                 return true
             }
 
