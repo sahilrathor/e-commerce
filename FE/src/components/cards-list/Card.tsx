@@ -16,7 +16,7 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
     if (recentlyViewedItems.length >= 5) {
       recentlyViewedItems.shift()
     }
-    setRecentlyViewedItems([...recentlyViewedItems, item])
+    setRecentlyViewedItems([item, ...recentlyViewedItems])
   }
 
   return (
@@ -29,7 +29,9 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
       <div
         className='p-2 flex flex-col gap-1 justify-center'
         >
-        <Link to={`/product/${item._id}`}
+        <Link
+          to={`/product/${item._id}`}
+          // target='_blank'
           onClick={handleClick}
           className='w-max text-md font-semibold'
         >

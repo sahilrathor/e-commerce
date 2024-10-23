@@ -61,6 +61,7 @@ const Hero = ({ height }: { height: number }) => {
                     delay: 2500,
                     disableOnInteraction: false,
                 }}
+                loop={true}
             >
                 {banners.map((banner, index) => 
                     <SwiperSlide key={index} style={{height: `${height}px`}} className={`rounded-lg overflow-hidden`}>

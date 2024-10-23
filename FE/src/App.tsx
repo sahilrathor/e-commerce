@@ -16,7 +16,7 @@ export default function App() {
   const [authenticated, setAuthenticated] = useState(false)
   useEffect(() => {
     const sessionToken = getCookie('Token');
-    console.log(sessionToken);
+    // console.log(sessionToken);
     if (!sessionToken) {
       setAuthenticated(false)
     }

@@ -16,7 +16,7 @@ const Partners = () => {
             <div
                 className='container pt-0 h-full w-full flex items-center justify-evenly'>
                 {partners.map((partner, index) => (
-                    <img src={partner} alt='logo' className='h-full aspect-[2/1] rounded-md  border-[1px] border-slate-800/40 object-contain' />
+                    <img key={index} src={partner} alt='logo' className='h-full aspect-[2/1] rounded-md  border-[1px] border-slate-800/40 object-contain' />
                 ))}
             </div>
         </div>
