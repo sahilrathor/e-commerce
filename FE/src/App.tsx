@@ -8,37 +8,45 @@ import ProductDetails from './pages/ProductDetails'
 import ProductCategoryPage from './pages/ProductCategoryPage'
 import { useEffect, useState } from 'react'
 import { getCookie } from './utils/sessionUtils'
+import { Helmet } from 'react-helmet'
+import { useAppInfo } from './stores/app-info'
 
 
 
 export default function App() {
+  const { name } = useAppInfo();
 
   const [authenticated, setAuthenticated] = useState(false)
   useEffect(() => {
     const sessionToken = getCookie('Token');
-    // console.log(sessionToken);
     if (!sessionToken) {
       setAuthenticated(false)
     }
     if (sessionToken) {
       setAuthenticated(true)
     }
-  }, []);
-
-
+  }, [window.location.pathname]);
   
+  console.log(authenticated);
+
+
+
   return (
-    <div className="w-full min-h-[100dvh] center-items justify-start flex-col bg-white ">
-      {authenticated && <Navbar />}
-      <Routes>
-        <Route path='/' element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
-        <Route path='/login' element={authenticated ? <Navigate to="/home" /> : <Auth />} />
-        <Route path='/home' element={authenticated ? <Home /> : <Navigate to="/login" />} />
-        <Route path='/product/:id' element={authenticated ? <ProductDetails /> : <Navigate to="/login" />} />
-        <Route path='/products/:category' element={<ProductCategoryPage />} />
-        {/* <Route path='/products/:category' element={authenticated ? <ProductCategoryPage /> : <Navigate to="/login" />} /> */}
-      </Routes>
-      {authenticated && <Footer />}
-    </div>
+    <>
+      <Helmet>
+        <title>{name}</title>
+      </Helmet>
+      <div className="w-full min-h-[100dvh] center-items justify-start flex-col bg-white ">
+        {authenticated && <Navbar />}
+        <Routes>
+          <Route path='/' element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
+          <Route path='/login' element={authenticated ? <Navigate to="/home" /> : <Auth />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/product/:id' element={<ProductDetails />} />
+          <Route path='/products/:category' element={<ProductCategoryPage />} />
+        </Routes>
+        {authenticated && <Footer />}
+      </div>
+    </>
   )
 }
