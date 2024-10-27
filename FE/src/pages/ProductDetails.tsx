@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom'
-import { InputNumber, Modal } from 'antd'
+import { Link, useParams } from 'react-router-dom'
+import { InputNumber, message, Modal } from 'antd'
 import { useState, useEffect } from 'react'
 import fetchItemInfo from '../services/fetchitemInfo'
 import { HeartIconFill, HeartIconOutline, ShareIconFill, ShareIconOutline, StarIconFill, StarIconHalf, StarIconOutline } from '../utils/icons'
 import CardsContainer from '../components/cards-list/CardsContainer'
-import { Item } from '../interfaces/item'
+import { CartItem, Item } from '../interfaces/item'
 
 import {
     EmailIcon,
@@ -20,6 +20,8 @@ import {
     WhatsappIcon,
     WhatsappShareButton,
 } from "react-share";
+import useCartStore from '../stores/useCartStore'
+import useCartDrawerStore from '../stores/UseCartDrawerStore'
 
 const ProductDetails: React.FC = () => {
 
@@ -32,7 +34,9 @@ const ProductDetails: React.FC = () => {
     const [similarItems, setSimilarItems] = useState<Item[]>([])
 
     const [openShareModal, setOpenShareModal] = useState<boolean>(false)
-
+    const { cartItems, addItemToCart } = useCartStore()
+    const [inCart, setInCart] = useState<boolean>(false)
+    const setOpenCartDrawer = useCartDrawerStore(state => state.setOpen)
 
     useEffect(() => {
         if (id) {
@@ -47,11 +51,17 @@ const ProductDetails: React.FC = () => {
         }
     }, [id])
 
+    useEffect(() => {
+        if (cartItems.find((item: CartItem) => item._id === itemInfo?._id)) {
+            setInCart(true)
+        }
+    }, [cartItems, itemInfo])
     // useEffect(() => {
     //     const data = items.filter((item: Item) => item.category.includes(itemInfo?.category[0] || ''))
     //     setSimilarItems(data)
     // }, [items, itemInfo
     // ])
+
 
 
     const rating = 1.5
@@ -75,6 +85,23 @@ const ProductDetails: React.FC = () => {
     }
 
 
+    const handleAddToCart = () => {
+        if (cartItems.find((item: CartItem) => item._id === itemInfo?._id)) {
+            setOpenCartDrawer(true)
+            return
+        }
+        else {
+            addItemToCart({
+                _id: itemInfo?._id || '',
+                name: itemInfo?.name || '',
+                price: itemInfo?.price || 0,
+                quantity: quantity,
+                image: itemInfo?.image || '',
+            })
+            message.success('Item added to cart')
+        }
+    }
+
 
 
     return (
@@ -89,13 +116,14 @@ const ProductDetails: React.FC = () => {
                     <div className='h-full w-full flex flex-col gap-5 relative'>
                         {/* PRODUCT NAME AND BRAND */}
                         <div>
-                            <p className='text-xl font-semibold'>{itemInfo?.name}</p>
+                            <p className='text-xl font-semibold text-gray-600'>{itemInfo?.name}</p>
                             {/* <p className='text-sm text-gray-500'>{itemInfo?.brand}</p> */}
                         </div>
 
                         {/* PRODUCT PRICE */}
-                        <div>
-                            <p className='text-2xl font-semibold'>${itemInfo?.price}</p>
+                        <div className='-mt-3'>
+                            <p className='text-2xl font-semibold'>
+                                ${itemInfo?.price}</p>
                         </div>
 
                         {/* PRODUCT DESCRIPTION */}
@@ -125,11 +153,23 @@ const ProductDetails: React.FC = () => {
                             <InputNumber min={1} max={maxQuantity} value={quantity} onChange={(value) => setQuantity(value || 1)} />
                         </div>
 
+                        {/* ADD TO CART AND BUY NOW BUTTONS */}
                         <div className="flex gap-2">
                             <button
-                                className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'
+                                onClick={handleAddToCart}
+                                className={`${inCart ? 'bg-gray-400 hover:bg-gray-500 border border-gray-500' : 'bg-emerald-500 hover:bg-emerald-600'} w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md group`}
                             >
-                                Add to Cart
+                                {!inCart ?
+                                    'Add to Cart' :
+                                    <>
+                                        <span className='group-hover:hidden'>
+                                            Added to Cart
+                                        </span>
+                                        <span className='hidden group-hover:block'>
+                                            Go to Cart
+                                        </span>
+                                    </>
+                                }
                             </button>
                             <button
                                 className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'

@@ -4,6 +4,7 @@ import { CartItem } from "../interfaces/item"
 interface CartStore {
     cartItems: CartItem[]
     setCartItems: (items: CartItem[]) => void
+    addItemToCart: (item: CartItem) => void
     removeItemFromCart: (id: string) => void
 }
 
@@ -23,11 +24,14 @@ const useCartStore = create<CartStore>((set) => ({
             quantity: 2,
             image: '',
         },
-    ],  
+    ],
     setCartItems: (items) => set({ cartItems: items }),
+    addItemToCart: (item) => set((state) => (
+        { cartItems: [...state.cartItems, item] }
+    )),
     removeItemFromCart: (id) => set((state) => (
-        { cartItems: state.cartItems.filter((item: CartItem) => item._id !== id) })
-    )
+        { cartItems: state.cartItems.filter((item: CartItem) => item._id !== id) }
+    )),
 }))
 
 export default useCartStore

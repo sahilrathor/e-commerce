@@ -21,7 +21,12 @@ const SearchBar = () => {
                 setSuggestions(items.map(item => ({
                     // label: item.name,
                     label:
-                        <Link to={`/product/${item._id}`} className="flex items-center gap-2">
+                        <Link
+                            target="_blank"
+                            onClick={() => setSearch('')}
+                            to={`/product/${item._id}`}
+                            className="flex items-center gap-2"
+                        >
                             {item.name}
                         </Link>,
                     key: item._id

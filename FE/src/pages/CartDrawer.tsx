@@ -1,6 +1,5 @@
-import { Button, Divider, Drawer } from "antd"
+import { Button, Drawer } from "antd"
 import useCartDrawerStore from "../stores/UseCartDrawerStore"
-import { useState, useEffect } from "react"
 import { DeleteOutlined } from "@ant-design/icons"
 import { CartItem } from "../interfaces/item"
 import useCartStore from "../stores/useCartStore"
@@ -9,7 +8,7 @@ import useCartStore from "../stores/useCartStore"
 
 const CartDrawer: React.FC = () => {
     const { open, setOpen } = useCartDrawerStore()
-    const { cartItems, setCartItems, removeItemFromCart } = useCartStore()
+    const { cartItems, removeItemFromCart } = useCartStore()
 
 
     return (
