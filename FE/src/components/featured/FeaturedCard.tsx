@@ -1,9 +1,22 @@
+import { useEffect, useState } from "react"
+import { Item } from "../../interfaces/item"
 import useItemsStore from "../../stores/useItemStore"
 
 const FeaturedCard: React.FC = () => {
     const items = useItemsStore(state => state.items)
-    const featuredItems = items.filter(item => item._id === '670c1da558985f7c9ab0fe1e' || item._id === '670c1f3f58985f7c9ab0fe89' || item._id === '670c20a258985f7c9ab0febf' || item._id === '670c1dca58985f7c9ab0fe34') 
+    const [featuredItems, setFeaturedItems] = useState<Item[]>([])
 
+    useEffect(() => {
+        const trending = items.filter((item: Item) => item.category.includes('trending'))
+        const randomIndex = Math.floor(Math.random() * trending.length)
+        if(randomIndex + 4 > trending.length){
+            const set = trending.slice(randomIndex - 4, randomIndex)
+            setFeaturedItems(set)
+        }else{
+            const set = trending.slice(randomIndex, randomIndex + 4)
+            setFeaturedItems(set)
+        }
+    }, [items])
 
     return (
         <div className='h-full aspect-square m-auto rounded-2xl border border-gray-300 overflow-hidden'>

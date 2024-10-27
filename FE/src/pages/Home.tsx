@@ -19,7 +19,6 @@ const Home: React.FC = () => {
     const fetchData = async () => {
       const data = await fetchItems()
       setItems(data)
-      console.log(data);
     }
     fetchData()
   }, [])
