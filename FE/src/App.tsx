@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { getCookie } from './utils/sessionUtils'
 import { Helmet } from 'react-helmet'
 import { useAppInfo } from './stores/app-info'
+import CartDrawer from './pages/CartDrawer'
 
 
 
@@ -38,6 +39,7 @@ export default function App() {
       </Helmet>
       <div className="w-full min-h-[100dvh] center-items justify-start flex-col bg-white ">
         {authenticated && <Navbar />}
+        <CartDrawer />
         <Routes>
           <Route path='/' element={authenticated ? <Navigate to="/home" /> : <Navigate to="/login" />} />
           <Route path='/login' element={authenticated ? <Navigate to="/home" /> : <Auth />} />

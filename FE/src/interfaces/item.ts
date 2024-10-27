@@ -12,3 +12,11 @@ export interface ItemStore {
     items: Item[];
     setItems: (items: Item[]) => void;
 }
+
+export interface CartItem {
+    _id: string;
+    name: string;
+    price: number;
+    quantity: number;
+    image: string;
+}

@@ -2,12 +2,13 @@ import { Dropdown } from 'antd';
 import { UserIcon } from '../../utils/icons';
 import type { MenuProps } from 'antd';
 import { removeCookie } from '../../utils/sessionUtils';
+import useCartDrawerStore from '../../stores/UseCartDrawerStore';
 
 const iconSize = 24;
 const userName = 'Sahil';
 
 const UserProfileBtn = () => {
-
+    const { setOpen } = useCartDrawerStore()
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -38,6 +39,11 @@ const UserProfileBtn = () => {
         },
         {
             key: '6',
+            label: 'Cart',
+            onClick: handleCart,
+        },  
+        {
+            key: '7',
             label: 'My Orders',
             // icon: <SettingOutlined />,
         },
@@ -45,12 +51,12 @@ const UserProfileBtn = () => {
             type: 'divider',
         },
         {
-            key: '7',
+            key: '8',
             label: 'Settings',
             // icon: <SettingOutlined />,
         },
         {
-            key: '8',
+            key: '9',
             label:
                 <span className='flex items-center gap-1 text-rose-500 font-semibold' onClick={handleLogout}>
                     Logout
@@ -58,6 +64,10 @@ const UserProfileBtn = () => {
             // icon: <LogoutOutlined />,
         },
     ];
+
+    function handleCart(){
+        setOpen(true)
+    }   
 
     function handleLogout() {
         removeCookie('Token');
