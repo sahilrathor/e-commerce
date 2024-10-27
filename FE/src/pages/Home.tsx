@@ -11,11 +11,9 @@ import { Item } from '../interfaces/item'
 
 const Home: React.FC = () => {
 
-  const items = useItemsStore(state => state.items)
   const setItems = useItemsStore(state => state.setItems)
 
   const recentlyViewedItems = useRecentViewedStore(state => state.recentlyViewedItems)
-  const [trendingItems, setTrendingItems] = useState<Item[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,10 +24,15 @@ const Home: React.FC = () => {
     fetchData()
   }, [])
 
+  const [trendingItems, setTrendingItems] = useState<Item[]>([])
+
   useEffect(() => {
-    const data = items.filter(item => item.category.includes('trending'))
-    setTrendingItems(data)
-  }, [items])
+    const fetchData = async () => {
+      const data = await fetchItems(['trending'])
+      setTrendingItems(data)
+    }
+    fetchData()
+  }, [])
 
 
   const heroHeight = 400;

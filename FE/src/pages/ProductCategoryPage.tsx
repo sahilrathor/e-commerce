@@ -1,26 +1,34 @@
 import { useParams } from "react-router-dom";
-import useItemsStore from "../stores/useItemStore";
-import { useEffect, useState } from "react";
-import { Item } from "../interfaces/item";
 import CardsContainer from "../components/cards-list/CardsContainer";
+import { useEffect, useState } from "react";
+import fetchItems from "../services/fetchItems";
+import { Item } from "../interfaces/item";
 
 const ProductCategoryPage = () => {
     const { category } = useParams();
-    const list = useItemsStore(state => state.items)
-    const [filteredItems, setFilteredItems] = useState<Item[]>([])
+
+    // Capitalize the first letter of the category
+    let title = ''
+    if(category){
+        title = category.charAt(0).toUpperCase() + category.slice(1)
+    }
+
+
+    const [items, setItems] = useState<Item[]>([])
     
-
     useEffect(() => {
-        const sameCategoryItems = list.filter((item: Item) => item.category.includes(category?.toLowerCase() || ''))
-        setFilteredItems(sameCategoryItems)
-    }, [list, category])
-
-    console.log('list', list)
-    console.log('filteredItems', filteredItems)
+        if(category){
+            const fetchData = async () => {
+                const data = await fetchItems([category]);
+                setItems(data);
+            }
+            fetchData();
+        }
+    }, [category]); 
 
     return (
         <div className="container py-8">
-            <CardsContainer title={category || ''} items={filteredItems} />
+            <CardsContainer title={title} items={items} />
         </div>
     )
 }
