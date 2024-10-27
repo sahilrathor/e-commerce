@@ -8,7 +8,15 @@ const getItemInfo = async (req: Request, res: Response) => {
         if(!item) {
             return res.status(404).json({ error: "Item not found" });
         }
-        res.status(200).json(item);
+
+        // Get the category of the current item
+        const itemCategory = item.category;
+        
+        // Find items with categories that match any category in the current item's category array
+        // $in operator is used to match any of the values in the itemCategory array
+        const similarItems = await Item.find({ category: { $in: itemCategory } });
+
+        res.status(200).json({ item, similarItems });
     } catch (error) {
         res.status(500).json(error);
     }

@@ -1,18 +1,14 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
 import { Item } from "../interfaces/item";
 
-const ItemsStore = (set: (state: Item[]) => void) => ({
+interface ItemStore {
+    items: Item[];
+    setItems: (items: Item[]) => void;
+}
+
+const useItemStore = create<ItemStore>((set) => ({
     items: [],
-    setItems: (items: Item[]) => set(items),
-})
+    setItems: (items: Item[]) => set({ items }),
+}))
 
-const useItemsStore = create(
-    devtools(
-        persist(ItemsStore, {
-            name: "items",
-        })
-    )
-)
-
-export default useItemsStore
+export default useItemStore

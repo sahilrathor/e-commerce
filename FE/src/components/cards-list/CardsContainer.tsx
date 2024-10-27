@@ -25,7 +25,7 @@ const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilte
 
     if (items.length === 0) {
         return (
-            <div className={`w-[90%] mt-10 mx-auto bg-gray-100 pt-5 pb-8 px-12 rounded-lg ${style}`}>
+            <div className={`w-[90%] mt-10 mx-auto bg-blue-200/20 pt-5 pb-8 px-12 rounded-lg ${style}`}>
                 <h2 className='text-2xl font-semibold text-left mb-3'>
                     {title}
                 </h2>
@@ -35,7 +35,7 @@ const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilte
     }
 
     return (
-        <div className={`w-full bg-gray-100 py-5 px-12 rounded-lg flex flex-col gap-5 ${style}`}>
+        <div className={`w-full bg-blue-200/20 py-5 px-12 rounded-lg flex flex-col gap-5 ${style}`}>
             {/* HEADER */}
             <div className='flex justify-between items-center'>
                 <h2 className='text-2xl font-semibold text-left mb-3'>

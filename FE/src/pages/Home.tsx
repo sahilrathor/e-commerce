@@ -21,6 +21,7 @@ const Home: React.FC = () => {
     const fetchData = async () => {
       const data = await fetchItems()
       setItems(data)
+      console.log(data);
     }
     fetchData()
   }, [])
@@ -45,18 +46,20 @@ const Home: React.FC = () => {
       </div>
       <div className='px-12'>
         <CardsContainer title='Trending Products' items={trendingItems} showFilter={false} />
-        {/* <CardsContainer title='Best Sellers' items={items} showFilter={false} /> */}
       </div>
-      
+      {/* <div className='px-12'>
+        <CardsContainer title='Best Sellers' items={items} showFilter={false} />
+      </div> */}
+
       <Partners />
 
       {/* Recently Viewed */}
       {recentlyViewedItems.length > 0 && (
-      <div className='px-12'>
-          <CardsContainer 
-            title='Recently Viewed' 
-            items={recentlyViewedItems} 
-            showFilter={false} 
+        <div className='px-12'>
+          <CardsContainer
+            title='Recently Viewed'
+            items={recentlyViewedItems}
+            showFilter={false}
             showPagination={false}
             style='bg-transparent border border-gray-100'
           />

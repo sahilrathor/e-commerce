@@ -5,40 +5,24 @@ import fetchItemInfo from '../services/fetchitemInfo'
 import { HeartIconFill, HeartIconOutline, ShareIconFill, ShareIconOutline, StarIconFill, StarIconHalf, StarIconOutline } from '../utils/icons'
 import CardsContainer from '../components/cards-list/CardsContainer'
 import { Item } from '../interfaces/item'
-import useItemsStore from '../stores/useItemStore'
 
 import {
     EmailIcon,
     EmailShareButton,
     FacebookIcon,
     FacebookShareButton,
-    GabShareButton,
-    HatenaShareButton,
-    InstapaperShareButton,
-    LineShareButton,
     LinkedinIcon,
     LinkedinShareButton,
-    LivejournalShareButton,
-    MailruShareButton,
-    OKShareButton,
-    PinterestShareButton,
-    PocketShareButton,
-    RedditShareButton,
     TelegramIcon,
     TelegramShareButton,
-    TumblrShareButton,
     TwitterIcon,
     TwitterShareButton,
-    ViberShareButton,
-    VKShareButton,
     WhatsappIcon,
     WhatsappShareButton,
-    WorkplaceShareButton,
 } from "react-share";
 
 const ProductDetails: React.FC = () => {
 
-    const { items } = useItemsStore()
     const { id } = useParams()
     const [quantity, setQuantity] = useState<number>(1)
     const maxQuantity = 25
@@ -54,7 +38,8 @@ const ProductDetails: React.FC = () => {
         if (id) {
             try {
                 fetchItemInfo(id).then((data) => {
-                    setItemInfo(data)
+                    setItemInfo(data.item)
+                    setSimilarItems(data.similarItems)
                 })
             } catch (error) {
                 console.error("Error fetching item info:", error);
@@ -62,12 +47,11 @@ const ProductDetails: React.FC = () => {
         }
     }, [id])
 
-    useEffect(() => {
-        const data = items.filter((item: Item) => item.category.includes(itemInfo?.category[0] || ''))
-        setSimilarItems(data)
-    }, [items, itemInfo
-    ])
-
+    // useEffect(() => {
+    //     const data = items.filter((item: Item) => item.category.includes(itemInfo?.category[0] || ''))
+    //     setSimilarItems(data)
+    // }, [items, itemInfo
+    // ])
 
 
     const rating = 1.5
@@ -142,13 +126,21 @@ const ProductDetails: React.FC = () => {
                         </div>
 
                         <div className="flex gap-2">
-                            <button className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'>Add to Cart</button>
-
-                            <button className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'>Buy Now</button>
+                            <button
+                                className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'
+                            >
+                                Add to Cart
+                            </button>
+                            <button
+                                className='bg-emerald-500 hover:bg-emerald-600 w-fit text-sm font-semibold justify-self-end text-white px-4 py-2 rounded-md'
+                            >
+                                Buy Now
+                            </button>
                         </div>
 
                         {/* PRODUCT FAVORITE AND SHARE */}
                         <div className='absolute top-5 right-5 flex  gap-2'>
+                            {/* FAVORITE BUTTON */}
                             <button className='w-8 h-8 border border-gray-200 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200 hover:text-rose-600 transition-all duration-150 group'>
                                 {/* <WishlistIcon size={24} /> */}
                                 <HeartIconOutline size={20} className='group-hover:hidden' />
@@ -156,7 +148,7 @@ const ProductDetails: React.FC = () => {
                                     className='hidden group-hover:block' />
                             </button>
 
-
+                            {/* SHARE BUTTON */}
                             <button
                                 onClick={() => setOpenShareModal(true)}
                                 className='w-8 h-8 border border-gray-200 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-600 transition-all duration-150 group'
@@ -165,6 +157,7 @@ const ProductDetails: React.FC = () => {
                                 <ShareIconFill size={20}
                                     className='hidden group-hover:block' />
                             </button>
+                            {/* SHARE MODAL */}
                             <Modal
                                 open={openShareModal}
                                 onCancel={() => setOpenShareModal(false)}
@@ -172,7 +165,7 @@ const ProductDetails: React.FC = () => {
                                 title={<p className='text-md font-semibold text-gray-800'>Share on</p>}
                                 className='max-w-fit'
                             >
-                                    <div className="w-36 mt-3 m-auto grid grid-cols-3 gap-2">
+                                <div className="w-36 mt-3 m-auto grid grid-cols-3 gap-2">
                                     <WhatsappShareButton className='flex items-center justify-center' url={window.location.href}>
                                         <WhatsappIcon size={32} round={true} />
                                     </WhatsappShareButton>
@@ -193,6 +186,7 @@ const ProductDetails: React.FC = () => {
                                     </LinkedinShareButton>
                                 </div>
                             </Modal>
+
                         </div>
 
                         {/* seller details */}
@@ -206,6 +200,8 @@ const ProductDetails: React.FC = () => {
                 </div>
             </div >
 
+
+            {/* SIMILAR ITEMS */}
             <CardsContainer items={similarItems} showFilter={false} title='You may also like' style='container pt-8 max-w-screen-xl mx-auto mb-5 bg-transparent' />
         </>
     )

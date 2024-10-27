@@ -20,7 +20,7 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
   }
 
   return (
-    <div className='w-full h-full p-2 rounded-md border border-slate-400 shadow-md overflow-hidden'
+    <div className='w-full h-full p-2 rounded-md border bg-white border-slate-200 shadow-md overflow-hidden'
     >
       <div className='w-full h-40'>
         <img src={item.image} alt={item.name + 'image'} className='h-full object-cover mx-auto' />
@@ -31,7 +31,7 @@ const Card: React.FC<{ item: Item }> = ({ item }) => {
         >
         <Link
           to={`/product/${item._id}`}
-          // target='_blank'
+          target='_blank'
           onClick={handleClick}
           className='w-max text-md font-semibold'
         >
