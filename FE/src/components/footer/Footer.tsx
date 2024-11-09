@@ -3,7 +3,11 @@ import { FaGithub } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
+gsap.registerPlugin(ScrollToPlugin)
 const Footer = () => {
   const linkedinLink = "https://www.linkedin.com/in/sahilrathor/"
   const githubLink = "https://github.com/sahilrathor"
@@ -11,6 +15,21 @@ const Footer = () => {
   const sourceCodeLink = "https://github.com/sahilrathor/e-commerce"
 
   const { name } = useAppInfo()
+  const navigate = useNavigate()
+
+  const goto = (path: string) => {
+    const currentPath = window.location.pathname
+    
+    if (currentPath === `/${path}`) {
+      gsap.to(window, { duration: 0.5, scrollTo: path })
+      // gsap.to(window, { duration: 1, scrollTo: { y: 0, autoKill: true } });
+    } else {
+      navigate(path)
+    }
+
+
+  }
+
   return (
     <div className='w-full border-t-[1px] px-12 py-10 border-slate-800/10 center-items justify-evenly gap-10'>
       {/* Brand */}
@@ -31,24 +50,45 @@ const Footer = () => {
       <div className="links w-32 font-semibold ">
         <ul className="flex flex-col gap-1">
           <li>
-            <a href="#home"
+            {/* <a href="/home"
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
-            >Home</a>
+              >Home</a> */}
+            <div 
+              onClick={() => {goto("home")}}
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
+            >
+              Home
+            </div>
           </li>
           <li>
-            <a href="/products"
+            {/* <a href="/products"
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
-            >Products</a>
+            >Products</a>  */}
+            <div 
+              onClick={() => {goto("products")}}
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
+            >
+              Products
+            </div>
           </li>
           <li>
-            <a href="/categories"
+            {/* <a href="/categories"
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
-            >Categories</a>
+            >Categories</a> */}
+            <div 
+              onClick={() => {goto("categories")}}
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
+            >
+              Categories
+            </div>
           </li>
           <li>
-            <a href="/about"
-              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
-            >About</a>
+            <div 
+              onClick={() => {goto("about")}}
+              className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
+            >
+              About
+            </div>
           </li>
         </ul>
       </div>

@@ -13,6 +13,7 @@ import { useAppInfo } from './stores/app-info'
 import CartDrawer from './pages/CartDrawer'
 import { Spin } from 'antd'
 import About from './pages/About'
+import Categories from './pages/Categories'
 
 
 
@@ -60,6 +61,7 @@ export default function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/products/:category' element={<ProductCategoryPage />} />
+          <Route path='/categories' element={<Categories />} />
           <Route path='/about' element={<About />} />
         </Routes>
         {isAuthenticated && <Footer />}
