@@ -3,12 +3,15 @@ import { UserIcon } from '../../utils/icons';
 import type { MenuProps } from 'antd';
 import { removeCookie } from '../../utils/sessionUtils';
 import useCartDrawerStore from '../../stores/UseCartDrawerStore';
+import { useAppInfo } from '../../stores/app-info';
 
 const iconSize = 24;
 const userName = 'Sahil';
 
 const UserProfileBtn = () => {
     const { setOpen } = useCartDrawerStore()
+    const setIsAuthenticated = useAppInfo(state => state.setIsAuthenticated)
+
     const items: MenuProps['items'] = [
         {
             key: '1',
@@ -71,6 +74,7 @@ const UserProfileBtn = () => {
 
     function handleLogout() {
         removeCookie('Token');
+        setIsAuthenticated(false)
         window.location.href = '/login';
     }
 

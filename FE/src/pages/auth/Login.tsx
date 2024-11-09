@@ -3,6 +3,7 @@ import { message } from 'antd';
 import { loginData } from '../../interfaces/auth';
 import useLogin from '../../hooks/login';
 import { useNavigate } from 'react-router-dom';
+import { useAppInfo } from '../../stores/app-info';
 
 interface LoginProps {
     onForgetPassword: () => void;
@@ -12,7 +13,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
     const { login, isLoading } = useLogin(); 
     const navigate = useNavigate();
-
+    const setIsAuthenticated = useAppInfo(state => state.setIsAuthenticated)
     const [formData, setFormData] = useState<loginData>({
         userName: "",
         password: "",
@@ -36,8 +37,8 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
 
         try {
             const response = await login(formData); 
-            // console.log(response);
             if (response) {
+                setIsAuthenticated(true)
                 navigate('/home');
             }
         } catch (err) {

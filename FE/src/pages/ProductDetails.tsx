@@ -64,8 +64,8 @@ const ProductDetails: React.FC = () => {
 
 
 
-    const rating = 1.5
-
+    const rating = (Math.random() * 2.5) + 2.5
+     
     const getRatingIcon = (rating: number) => {
         const fullStars = Math.floor(rating)
         const halfStars = rating % 1
