@@ -3,7 +3,7 @@ import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import Auth from './pages/auth/Auth'
 import Home from './pages/Home'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import ProductDetails from './pages/ProductDetails'
 import ProductCategoryPage from './pages/ProductCategoryPage'
 import { useEffect } from 'react'
@@ -18,13 +18,14 @@ import About from './pages/About'
 
 export default function App() {
   const { name } = useAppInfo();
-
+  const navigate = useNavigate()
   const isAuthenticated = useAppInfo(state => state.isAuthenticated)
   const setIsAuthenticated = useAppInfo(state => state.setIsAuthenticated)
 
   useEffect(() => {
     const sessionToken = getCookie('Token');
     if (!sessionToken) {
+      navigate('/login')
       setIsAuthenticated(false)
     }
     if (sessionToken) {

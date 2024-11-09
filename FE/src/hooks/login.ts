@@ -27,8 +27,13 @@ const useLogin = () => {
 
             if (res.status === 200) {
                 message.success('Logged in successfully');
-                // console.log(data);
-                setCookie('Token', data.token);
+
+                if (loginData.rememberMe) {
+                    setCookie('Token', data.token, { expires: 30 });
+                } else {
+                    setCookie('Token', data.token);
+                }
+
                 navigate('/');
                 return true
             }
