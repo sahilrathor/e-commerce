@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet'
 import { useAppInfo } from './stores/app-info'
 import CartDrawer from './pages/CartDrawer'
 import { Spin } from 'antd'
+import About from './pages/About'
 
 
 
@@ -58,6 +59,7 @@ export default function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/product/:id' element={<ProductDetails />} />
           <Route path='/products/:category' element={<ProductCategoryPage />} />
+          <Route path='/about' element={<About />} />
         </Routes>
         {isAuthenticated && <Footer />}
       </div>

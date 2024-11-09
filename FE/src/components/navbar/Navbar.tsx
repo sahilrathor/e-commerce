@@ -2,7 +2,7 @@ import { Dropdown } from 'antd';
 import logo from '../../assets/logo.png';
 import { useAppInfo } from '../../stores/app-info'
 import UserProfileBtn from '../buttons/UserProfileBtn';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 
 
@@ -39,7 +39,7 @@ const Navbar = () => {
       ],
     },
     {
-      name: 'About',
+      name: <Link to='/about'>About</Link>,
       path: '/about',
     },
   ]
