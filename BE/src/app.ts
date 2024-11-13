@@ -18,13 +18,12 @@ dotenv.config({    // must be declared before the app is created
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
-app.use(express.json());
-app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://e-commerce-64e1.onrender.com",
   credentials: true
 }));
+app.use(express.json());
+app.use(cookieParser());
 
 
 app.use("/api/auth", authRoutes)
