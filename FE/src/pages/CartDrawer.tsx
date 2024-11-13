@@ -4,11 +4,16 @@ import { DeleteOutlined } from "@ant-design/icons"
 import { CartItem } from "../interfaces/item"
 import useCartStore from "../stores/useCartStore"
 
-
+interface CartStore {
+    cartItems: CartItem[]
+    setCartItems: (items: CartItem[]) => void
+    addItemToCart: (item: CartItem) => void
+    removeItemFromCart: (id: string) => void
+}
 
 const CartDrawer: React.FC = () => {
     const { open, setOpen } = useCartDrawerStore()
-    const { cartItems, removeItemFromCart } = useCartStore()
+    const { cartItems, removeItemFromCart } = useCartStore() as CartStore
 
 
     return (
