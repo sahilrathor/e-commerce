@@ -4,11 +4,13 @@ import type { MenuProps } from 'antd';
 import { removeCookie } from '../../utils/sessionUtils';
 import useCartDrawerStore from '../../stores/UseCartDrawerStore';
 import { useAppInfo } from '../../stores/app-info';
+import { useNavigate } from 'react-router-dom';
 
 const iconSize = 24;
 const userName = 'Sahil';
 
 const UserProfileBtn = () => {
+    const navigate = useNavigate();
     const { setOpen } = useCartDrawerStore()
     const setIsAuthenticated = useAppInfo(state => state.setIsAuthenticated)
 
@@ -24,6 +26,7 @@ const UserProfileBtn = () => {
         {
             key: '2',
             label: 'Profile',
+            onClick: ()=> navigate('/user-profile') ,
         },
         {
             key: '3',

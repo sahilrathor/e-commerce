@@ -4,12 +4,13 @@ import {message} from 'antd'
 import { loginData } from '../interfaces/auth';
 import { setCookie } from '../utils/sessionUtils';
 import { useNavigate } from 'react-router-dom';
+import { useAppInfo } from '../stores/app-info';
 
 const useLogin = () => {
     const navigate = useNavigate();
-    const apiUrl = import.meta.env.VITE_API_URL; // Environment variable for the API URL
-    const [isLoading, setIsLoading] = useState(false); // Loading state
-    // const setLoggedInUser = useLoggedInUser(state => state.setAuthenticated);
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const [isLoading, setIsLoading] = useState(false); 
+    const { setUser } = useAppInfo();
 
     const login = async (loginData: loginData) => {
         const success = handleInputErrors(loginData);
@@ -23,6 +24,7 @@ const useLogin = () => {
                 { withCredentials: true }
             );
 
+
             const data = res.data;
 
             if (res.status === 200) {
@@ -33,6 +35,8 @@ const useLogin = () => {
                 } else {
                     setCookie('Token', data.token);
                 }
+
+                setUser(data.user);
 
                 navigate('/');
                 return true

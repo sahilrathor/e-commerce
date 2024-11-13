@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { InputNumber, message, Modal } from 'antd'
 import { useState, useEffect } from 'react'
 import fetchItemInfo from '../services/fetchitemInfo'

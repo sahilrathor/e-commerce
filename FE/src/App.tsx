@@ -14,6 +14,7 @@ import CartDrawer from './pages/CartDrawer'
 import { Spin } from 'antd'
 import About from './pages/About'
 import Categories from './pages/Categories'
+import UserProfile from './pages/UserProfile'
 
 
 
@@ -63,6 +64,7 @@ export default function App() {
           <Route path='/products/:category' element={<ProductCategoryPage />} />
           <Route path='/categories' element={<Categories />} />
           <Route path='/about' element={<About />} />
+          <Route path='/user-profile' element={<UserProfile />} />
         </Routes>
         {isAuthenticated && <Footer />}
       </div>

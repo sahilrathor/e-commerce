@@ -27,14 +27,23 @@ app.use(cors({
 }));
 
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 app.use("/api/auth", authRoutes)
 app.use("/api/users", protectRoute, userRoutes)
 app.use("/api/items", protectRoute, itemRoutes)
 app.use("/api/cart", protectRoute, cartRoutes)
+
+
+// HANDLE FRONTEND  (must be declared after the API routes)
+app.use(express.static(path.join(__dirname, '../../FE/dist'))); 
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../FE/dist', 'index.html'));
+});
+
+app.get("/", (req, res) => {
+  res.send("E-commerce API running here...");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectToDb();

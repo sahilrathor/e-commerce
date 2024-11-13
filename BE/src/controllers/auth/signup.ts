@@ -35,7 +35,13 @@ const signup = async (req: Request, res: Response) => {
         if (newUser) {
             await newUser.save();
             const { token } = generateTokenCookie(newUser._id.toString(), false);
-            res.status(200).json({ message: "User created successfully", user: newUser, token });
+            res.status(200).json({ message: "User created successfully", user: {
+                id: newUser._id,
+                fullName: newUser.firstName + " " + newUser.lastName,
+                userName: newUser.userName,
+                email: newUser.email,
+                gender: newUser.gender,
+            }, token });
         }
 
     } catch (error) {
