@@ -12,7 +12,7 @@ import cors from "cors";
 import protectRoute from "./middlewares/protectRoute";
 
 dotenv.config({    // must be declared before the app is created
-  path: path.resolve(__dirname, "../../.env")
+  path: path.resolve(__dirname, ".env")
 });
 
 const app = express();
