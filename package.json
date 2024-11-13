@@ -27,7 +27,12 @@
     "react-share": "^5.1.0",
     "react-slick": "^0.30.2",
     "swiper": "^11.1.14",
-    "zustand": "^5.0.0-rc.2"
+    "zustand": "^5.0.0-rc.2",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/gsap": "^3.0.0",
+    "@types/js-cookie": "^3.0.6",
+    "concurrently": "^9.0.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
