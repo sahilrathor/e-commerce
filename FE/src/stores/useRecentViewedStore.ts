@@ -27,7 +27,7 @@ const useRecentViewedStore = create<RecentViewedStore>()(
     persist(
         (set) => ({
             recentlyViewedItems: [],
-            setRecentlyViewedItems: (items) => set({ recentlyViewedItems: items })
+            setRecentlyViewedItems: (items: Item[]) => set({ recentlyViewedItems: items })
         }),
         {
             name: 'recently-viewed-items',

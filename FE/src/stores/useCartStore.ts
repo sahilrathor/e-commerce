@@ -9,27 +9,12 @@ interface CartStore {
 }
 
 const useCartStore = create<CartStore>((set) => ({
-    cartItems: [
-        {
-            _id: '1',
-            name: 'Item 1',
-            price: 100,
-            quantity: 5,
-            image: '',
-        },
-        {
-            _id: '2',
-            name: 'Item 2',
-            price: 200,
-            quantity: 2,
-            image: '',
-        },
-    ],
-    setCartItems: (items) => set({ cartItems: items }),
-    addItemToCart: (item) => set((state) => (
+    cartItems: [],
+    setCartItems: (items: CartItem[]) => set({ cartItems: items }),
+    addItemToCart: (item: CartItem) => set((state) => (
         { cartItems: [...state.cartItems, item] }
     )),
-    removeItemFromCart: (id) => set((state) => (
+    removeItemFromCart: (id: string) => set((state) => (
         { cartItems: state.cartItems.filter((item: CartItem) => item._id !== id) }
     )),
 }))

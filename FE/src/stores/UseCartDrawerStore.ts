@@ -7,7 +7,7 @@ interface CartDrawerStore {
 
 const useCartDrawerStore = create<CartDrawerStore>((set) => ({
     open: false,
-    setOpen: (open) => set({ open })
+    setOpen: (open: boolean) => set({ open })
 }))
 
 export default useCartDrawerStore

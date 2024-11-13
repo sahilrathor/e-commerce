@@ -13,7 +13,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
     const { login, isLoading } = useLogin(); 
     const navigate = useNavigate();
-    const setIsAuthenticated = useAppInfo(state => state.setIsAuthenticated)
+    const setIsAuthenticated = useAppInfo((state:any) => state.setIsAuthenticated)
     const [formData, setFormData] = useState<loginData>({
         userName: "",
         password: "",

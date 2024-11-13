@@ -7,7 +7,7 @@ interface LoggedInUser {
 
 const useLoggedInUser = create<LoggedInUser>((set) => ({
     authenticated: false,
-    setAuthenticated: (authenticated) => set({ authenticated })
+    setAuthenticated: (authenticated: boolean) => set({ authenticated })
 }))
     
 export default useLoggedInUser
