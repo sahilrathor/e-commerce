@@ -13,37 +13,37 @@ interface Banner {
 
 const darkBanners: Banner[] = [
     {
-        image: '/hero-images/dark-banners/1.png',
+        image: '/hero-images/dark-banners/1.webp',
         link: '/products/1'
     },
     {
-        image: '/hero-images/dark-banners/2.png',
+        image: '/hero-images/dark-banners/2.webp',
         link: '/products/2'
     },
     {
-        image: '/hero-images/dark-banners/4.png',
+        image: '/hero-images/dark-banners/4.webp',
         link: '/products/4'
     },
     {
-        image: '/hero-images/dark-banners/3.png',
+        image: '/hero-images/dark-banners/3.webp',
         link: '/products/3'
     },
 ];
 const lightBanners: Banner[] = [
     {
-        image: '/hero-images/light-banners/1.png',
+        image: '/hero-images/light-banners/1.webp',
         link: '/products/1'
     },
     {
-        image: '/hero-images/light-banners/2.png',
+        image: '/hero-images/light-banners/2.webp',
         link: '/products/2'
     },
     {
-        image: '/hero-images/light-banners/3.png',
+        image: '/hero-images/light-banners/3.webp',
         link: '/products/3'
     },
     {
-        image: '/hero-images/light-banners/4.png',
+        image: '/hero-images/light-banners/4.webp',
         link: '/products/4'
     },
 ];
