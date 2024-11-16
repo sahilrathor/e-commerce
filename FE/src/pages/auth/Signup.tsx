@@ -4,7 +4,7 @@ import { signupData } from '../../interfaces/auth';
 import useSignup from '../../hooks/signup';
 
 const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
-    const { signup, isLoading } = useSignup(); 
+    const { signup, isLoading } = useSignup();
 
     const [formData, setFormData] = useState<signupData>({
         firstName: "",
@@ -44,7 +44,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 email: "",
                 password: "",
                 confirmPassword: "",
-                gender: "", 
+                gender: "",
             });
         }
     };
@@ -59,7 +59,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-2 ring-emerald-600 '
+                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
             />
 
             {/* LAST NAME */}
@@ -69,7 +69,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-2 ring-emerald-600 '
+                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
             />
 
             {/* USERNAME */}
@@ -79,7 +79,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 name="userName"
                 value={formData.userName}
                 onChange={handleChange}
-                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-2 ring-emerald-600 '
+                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
             />
 
             {/* EMAIL */}
@@ -89,7 +89,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-2 ring-emerald-600 '
+                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
             />
 
             {/* PASSWORD */}
@@ -99,7 +99,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-2 focus:ring-emerald-600'
+                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
             />
 
             {/* CONFIRM PASSWORD */}
@@ -109,7 +109,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-2 focus:ring-emerald-600'
+                className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
             />
 
             <div className="flex justify-between w-full select-none">
@@ -145,16 +145,16 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             {/* LOGIN BUTTON */}
             <button
                 onClick={handleSubmit}
-                disabled={isLoading} 
+                disabled={isLoading}
                 className={`w-full h-10 rounded-md font-semibold text-white bg-emerald-700 hover:bg-emerald-800`}
             >
                 {isLoading ? 'Signing up...' : 'SIGN UP'}
             </button>
             <p
-                    className='text-xs text-emerald-700 font-semibold hover:text-emerald-800 hover:bg-emerald-900/20 rounded-sm px-1.5 py-0.5 cursor-pointer'
+                className='text-xs text-emerald-700 font-semibold hover:text-emerald-800 hover:bg-emerald-900/5 rounded-md px-1.5 py-0.5 cursor-pointer'
                 onClick={onLogin}
             >
-                Already have an account? 
+                Already have an account?
             </p>
         </form>
     );

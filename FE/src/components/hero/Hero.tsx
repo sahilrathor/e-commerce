@@ -47,12 +47,15 @@ const lightBanners: Banner[] = [
         link: '/products/4'
     },
 ];
-const Hero = ({ height }: { height: number }) => {
+
+
+const Hero = () => {
 
     const { theme } = useAppInfo();
     const banners = theme === 'light' ? lightBanners : darkBanners;
     return (
-        <div className="hero-container h-full w-full mx-auto rounded-lg select-none overflow-hidden">
+
+        <div className="h-full w-full mx-auto rounded-lg select-none">
             <Swiper
                 modules={[Autoplay]}
                 spaceBetween={50}
@@ -62,14 +65,20 @@ const Hero = ({ height }: { height: number }) => {
                     disableOnInteraction: false,
                 }}
                 loop={true}
+                className="h-full"
             >
-                {banners.map((banner, index) => 
-                    <SwiperSlide key={index} style={{height: `${height}px`}} className={`rounded-lg overflow-hidden`}>
-                        <img src={banner.image} alt="Shopping hero" className='banner-image rounded-lg' />
+                {banners.map((banner, index) => (
+                    <SwiperSlide key={index} className="h-full w-full flex justify-center items-center">
+                        <img
+                            src={banner.image}
+                            alt="Shopping hero"
+                            className="h-full max-w-full object-contain rounded-lg"
+                        />
                     </SwiperSlide>
-                )}
+                ))}
             </Swiper>
         </div>
+
     );
 };
 

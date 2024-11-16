@@ -59,7 +59,7 @@ const Navbar = () => {
         </h1>
 
         {/* links */}
-        <ul className='flex items-center gap-2'>
+        <ul className='items-center gap-2 hidden sm:flex'>
           {NavLinks.map((item, index) => (
             <li key={index}
               className='text-sm font-semibold  px-1 py-0.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all duration-300 cursor-pointer'

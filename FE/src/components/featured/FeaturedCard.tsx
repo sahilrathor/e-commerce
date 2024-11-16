@@ -19,7 +19,7 @@ const FeaturedCard: React.FC = () => {
     }, [items])
 
     return (
-        <div className='h-full aspect-square m-auto rounded-2xl border border-gray-300 overflow-hidden'>
+        <div className='max-h-full aspect-square m-auto rounded-2xl border border-gray-300 overflow-hidden'>
             <div className="h-full w-full p-3 grid grid-cols-2 grid-rows-2 gap-3">
                 {featuredItems.map((item) => (
                     <div key={item._id} className="w-full h-full bg-blue-200/20 rounded-lg overflow-hidden flex items-center justify-center">

@@ -55,13 +55,13 @@ const Auth = () => {
         // </div>
         <div id="login-container" className='w-full h-screen bg-emerald-700 center-items'>
             <div className='h-screen sm:h-auto w-full sm:w-96 py-5 px-10 sm:rounded-3xl bg-slate-100 center-items flex-col gap-5'>
-                <h1 className='login-head  relative w-fit mx-auto px-2 py-1'>
+                <h1 className='login-head  relative w-fit mx-auto px-2 py-0'>
                     <p className='text-2xl font-bold drop-shadow-lg text-emerald-600'>
                         {isLogin && "LOG IN"}
                         {isUpdatePassword && "UPDATE PASSWORD"}
                         {isSignup && "SIGN UP"}
                     </p>
-                    <div className="left-1/2 right-1/2 -bottom-0.5 h-[2px] bg-emerald-600 rounded-full absolute animate-1"></div>
+                    <div className="left-1/2 right-1/2 bottom-0 h-[2px] bg-emerald-600 rounded-full absolute animate-1"></div>
                 </h1>
                 {isLogin && <Login onForgetPassword={handleForgetPassword} onSignup={handleSignup} />}
                 {isUpdatePassword && <UpdatePassword />}

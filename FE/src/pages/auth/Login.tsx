@@ -40,16 +40,17 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
             if (response) {
                 setIsAuthenticated(true)
                 navigate('/home');
+                setFormData({
+                    userName: "",
+                    password: "",
+                    rememberMe: false
+                });
+                return true
             }
+
         } catch (err) {
             message.error('Login failed');
             return false
-        } finally {
-            setFormData({
-                userName: "",
-                password: "",
-                rememberMe: false
-            });
         }
         return false
     };
@@ -65,7 +66,7 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
                         name="userName"
                         value={formData.userName}
                         onChange={handleChange}
-                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-2 ring-emerald-600 '
+                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669] '
                     />
 
                     {/* PASSWORD */}
@@ -75,7 +76,7 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
-                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-2 focus:ring-emerald-600'
+                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
                     />
 
                     <div className='flex justify-between w-full'>
@@ -93,7 +94,7 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
                     </div>
 
                     <div 
-                    className='text-xs tracking-tighter hover:bg-slate-200 hover:text-emerald-600 bg-slate-200/20 rounded-sm px-1 cursor-pointer'
+                    className='text-xs tracking-tighter hover:bg-emerald-900/10 hover:text-emerald-600 rounded-md px-1 cursor-pointer'
                     onClick={onForgetPassword}
                     >
                         Forgot Password ?
@@ -109,7 +110,7 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
                         {isLoading ? 'Logging in...' : 'LOG IN'}
                     </button>
                     <p 
-                    className='text-xs text-emerald-700 font-semibold hover:text-emerald-800 hover:bg-emerald-900/20 rounded-sm px-1.5 py-0.5 cursor-pointer'
+                    className='text-xs text-emerald-700 font-semibold hover:text-emerald-800 hover:bg-emerald-900/5 rounded-md px-1.5 py-0.5 cursor-pointer'
                     onClick={onSignup}
                     >
                         Don't have an account?

@@ -51,7 +51,7 @@ const UpdatePassword = () => {
                         name="userName"
                         value={formData.userName}
                         onChange={handleChange}
-                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none border-none focus:ring-2 ring-emerald-600 '
+                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
                     />
 
                     {/* PASSWORD */}
@@ -61,7 +61,7 @@ const UpdatePassword = () => {
                         name="newPassword"
                         value={formData.newPassword}
                         onChange={handleChange}
-                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-2 focus:ring-emerald-600'
+                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
                     />
 
                     <input
@@ -70,7 +70,7 @@ const UpdatePassword = () => {
                         name="confirmNewPassword"
                         value={formData.confirmNewPassword}
                         onChange={handleChange}
-                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-2 focus:ring-emerald-600'
+                        className='w-full h-9 rounded-md bg-slate-200 text-slate-900 py-auto px-3 outline-none focus:ring-1 ring-emerald-600 focus:shadow-[0_0_10px_0_#059669]'
                     />
 
 

@@ -34,18 +34,22 @@ const Home: React.FC = () => {
   }, [])
 
 
-  const heroHeight = 400;
 
   return (
     <div id='home' className='w-full h-full py-5 relative flex flex-col gap-10'>
-      <div className={`h-[${heroHeight}px] px-12 flex gap-5 items-center justify-center`}>
-        <div className="w-1/3 h-full p-5">
+
+      <div className={`md:h-[400px] sm:px-12 px-5 flex gap-5 items-center justify-center flex-wrap-reverse md:flex-nowrap`}>
+        <div className="md:w-1/3 w-full h-full flex justify-center items-center">
           <FeaturedCard />
         </div>
-        <div className="w-2/3 h-full">
-          <Hero height={heroHeight} />
+        <div className="md:w-2/3 w-full h-full">
+          <Hero />
         </div>
       </div>
+
+
+
+
       <div className='px-12'>
         <CardsContainer title='Trending Products' items={trendingItems} showFilter={false} />
       </div>
