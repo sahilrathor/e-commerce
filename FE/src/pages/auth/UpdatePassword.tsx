@@ -42,7 +42,7 @@ const UpdatePassword = () => {
     };
 
     return (
-                <form className='px-16 flex flex-col gap-3 w-full items-center'>
+                <form className='max-w-96 mx-auto flex flex-col gap-3 w-full items-center'>
 
                     {/* USERNAME */}
                     <input
@@ -79,9 +79,9 @@ const UpdatePassword = () => {
                     <button
                         onClick={handleSubmit}
                         disabled={isLoading} 
-                        className={`w-full h-10 rounded-md bg-emerald-600 hover:bg-emerald-700`}
+                        className={`w-full h-10 rounded-md text-white font-semibold bg-emerald-700 hover:bg-emerald-800`}
                     >
-                        {isLoading ? 'Updating...' : 'Change Password'}
+                        {isLoading ? 'Updating...' : 'UPDATE PASSWORD'}
                     </button>
                 </form>
     );

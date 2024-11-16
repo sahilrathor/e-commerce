@@ -55,7 +55,7 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
     };
 
     return (
-                <form className='px-16 flex flex-col gap-3 w-full items-center'>
+                <form className='w-full max-w-96 mx-auto flex flex-col gap-3 items-center'>
                     
 
                     {/* USERNAME */}
@@ -104,12 +104,12 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
                     <button
                         onClick={handleSubmit}
                         disabled={isLoading} 
-                        className={`w-full h-10 rounded-md bg-emerald-600 hover:bg-emerald-700`}
+                        className={`w-full h-10 rounded-md text-white font-semibold bg-emerald-700 hover:bg-emerald-800`}
                     >
-                        {isLoading ? 'Logging in...' : 'Log in'}
+                        {isLoading ? 'Logging in...' : 'LOG IN'}
                     </button>
                     <p 
-                    className='text-xs text-slate-900 font-semibold hover:bg-slate-50 rounded-md px-2 py-0.5'
+                    className='text-xs text-emerald-700 font-semibold hover:text-emerald-800 hover:bg-emerald-900/20 rounded-sm px-1.5 py-0.5 cursor-pointer'
                     onClick={onSignup}
                     >
                         Don't have an account?

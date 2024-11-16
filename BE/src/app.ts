@@ -17,9 +17,10 @@ dotenv.config({    // must be declared before the app is created
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const CLIENT_URL = process.env.CLIENT_URL;
 
 app.use(cors({
-  origin: "https://e-commerce-64e1.onrender.com",
+  origin: CLIENT_URL,
   credentials: true
 }));
 app.use(express.json());

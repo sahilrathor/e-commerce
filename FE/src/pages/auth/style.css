@@ -11,3 +11,24 @@
         transform: translateY(-50%);
     }
 }
+
+
+#login-container{
+    /* background: url("./login-bg.webp") ; */
+    /* background: linear-gradient( #00000055, white), url("./login-bg.webp") ; */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+
+.animate-1{
+    /* right: 100% */
+    transition: .2s ease all;
+}
+#login-container:hover .animate-1{
+    left: 0;
+    right: 0px;
+    transition: .2s ease all;
+}

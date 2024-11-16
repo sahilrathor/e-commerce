@@ -50,7 +50,7 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
     };
 
     return (
-        <form className='px-16 flex flex-col gap-3 w-full items-center'>
+        <form className='max-w-96 mx-auto flex flex-col gap-3 w-full items-center'>
 
             {/* FIRST NAME */}
             <input
@@ -115,28 +115,28 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             <div className="flex justify-between w-full select-none">
                 {/* GENDER */}
                 <div className="center-items self-start gap-2">
-                    <div className="center-items bg-slate-200/20 rounded-sm px-1 gap-1">
+                    <div className="center-items bg-slate-200/20 rounded-sm px-1 gap-1 cursor-pointer">
                         <input
                             type="checkbox"
                             id="male"
                             name="male"
                             checked={formData.gender === "male"}
                             onChange={() => setFormData({ ...formData, gender: "male" })}
-                            className='size-3 accent-emerald-600 hover:accent-emerald-700'
+                            className='size-3 accent-emerald-600 hover:accent-emerald-700 cursor-pointer'
                         />
-                        <label htmlFor="male" className="text-xs tracking-tighter">Male</label>
+                        <label htmlFor="male" className="text-xs tracking-tighter cursor-pointer">Male</label>
                     </div>
 
-                    <div className="center-items bg-slate-200/20 rounded-sm px-1 gap-1">
+                    <div className="center-items bg-slate-200/20 rounded-sm px-1 gap-1 cursor-pointer">
                         <input
                             type="checkbox"
                             id="female"
                             name="female"
                             checked={formData.gender === "female"}
                             onChange={() => setFormData({ ...formData, gender: "female" })}
-                            className='size-3 accent-emerald-600 hover:accent-emerald-700'
+                            className='size-3 accent-emerald-600 hover:accent-emerald-700 cursor-pointer'
                         />
-                        <label htmlFor="female" className="text-xs tracking-tighter">Female</label>
+                        <label htmlFor="female" className="text-xs tracking-tighter cursor-pointer">Female</label>
                     </div>
                 </div>
             </div>
@@ -146,12 +146,12 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             <button
                 onClick={handleSubmit}
                 disabled={isLoading} 
-                className={`w-full h-10 rounded-md bg-emerald-600 hover:bg-emerald-700`}
+                className={`w-full h-10 rounded-md font-semibold text-white bg-emerald-700 hover:bg-emerald-800`}
             >
-                {isLoading ? 'Signing up...' : 'Sign up'}
+                {isLoading ? 'Signing up...' : 'SIGN UP'}
             </button>
             <p
-                className='text-xs text-slate-900 font-semibold hover:bg-slate-50 rounded-md px-2 py-0.5'
+                    className='text-xs text-emerald-700 font-semibold hover:text-emerald-800 hover:bg-emerald-900/20 rounded-sm px-1.5 py-0.5 cursor-pointer'
                 onClick={onLogin}
             >
                 Already have an account? 
