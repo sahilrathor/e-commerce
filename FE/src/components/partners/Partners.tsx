@@ -2,11 +2,11 @@ import { useState } from "react"
 
 const Partners = () => {
     const [partners, _setPartners ] = useState<string[]>([
-        'https://placehold.co/100x50',
-        'https://placehold.co/100x50',
-        'https://placehold.co/100x50',
-        'https://placehold.co/100x50',
-        'https://placehold.co/100x50',
+        'https://placehold.co/200x100',
+        'https://placehold.co/200x100',
+        'https://placehold.co/200x100',
+        'https://placehold.co/200x100',
+        'https://placehold.co/200x100',
     ])
 
 

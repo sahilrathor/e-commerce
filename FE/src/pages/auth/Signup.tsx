@@ -31,7 +31,15 @@ const Signup: React.FC<{ onLogin: () => void }> = ({ onLogin }) => {
             return;
         }
 
-        // console.log(formData);
+        setFormData({
+            ...formData,
+            firstName: formData.firstName.trim(),
+            lastName: formData.lastName.trim(),
+            email: formData.email.trim(),
+            userName: formData.userName.trim(),
+            password: formData.password.trim(),
+        })
+
         try {
             await signup(formData);
         } catch (err) {

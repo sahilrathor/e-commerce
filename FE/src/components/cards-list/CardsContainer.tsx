@@ -35,7 +35,7 @@ const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilte
     }
 
     return (
-        <div className={`w-full bg-blue-200/20 py-5 px-12 rounded-lg flex flex-col gap-5 ${style}`}>
+        <div className={`w-full bg-blue-200/20 py-5 sm:px-12 px-5 sm:rounded-lg flex flex-col gap-5 ${style}`}>
             {/* HEADER */}
             <div className='flex justify-between items-center'>
                 <h2 className='text-2xl font-semibold text-left mb-3'>
@@ -43,7 +43,7 @@ const CardsContainer: React.FC<CardsContainerProps> = ({ items, title, showFilte
                 </h2>
                 {showFilter && <button className="bg-gray-200 text-gray-600 hover:bg-gray-300 px-4 py-2 rounded-md">Filter</button>}
             </div>
-            <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8'>
                 {paginatedItems.map((item) => (
                     <Card key={item._id} item={item} />
                 ))}

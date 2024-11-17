@@ -50,7 +50,7 @@ const Home: React.FC = () => {
 
 
 
-      <div className='px-12'>
+      <div className='sm:px-12 px-0'>
         <CardsContainer title='Trending Products' items={trendingItems} showFilter={false} />
       </div>
       {/* <div className='px-12'>
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
 
       {/* Recently Viewed */}
       {recentlyViewedItems.length > 0 && (
-        <div className='px-12'>
+        <div className='sm:px-12 px-0'>
           <CardsContainer
             title='Recently Viewed'
             items={recentlyViewedItems}

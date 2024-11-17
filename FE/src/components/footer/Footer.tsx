@@ -19,7 +19,7 @@ const Footer = () => {
 
   const goto = (path: string) => {
     const currentPath = window.location.pathname
-    
+
     if (currentPath === `/${path}`) {
       gsap.to(window, { duration: 0.5, scrollTo: path })
       // gsap.to(window, { duration: 1, scrollTo: { y: 0, autoKill: true } });
@@ -31,7 +31,7 @@ const Footer = () => {
   }
 
   return (
-    <div className='w-full border-t-[1px] px-12 py-10 border-slate-800/10 center-items justify-evenly gap-10'>
+    <div className='w-full border-t-[1px] sm:px-12 px-5 py-10 border-slate-800/10 center-items flex-col sm:flex-row justify-evenly gap-10'>
       {/* Brand */}
       <div className="flex flex-col">
         <span className='text-3xl font-bold text-emerald-500 mb-2 drop-shadow-lg'>{name}</span>
@@ -42,19 +42,20 @@ const Footer = () => {
         >
 
           Source Code
-          <FaGithub size={22}/>
+          <FaGithub size={22} />
         </a>
       </div>
 
+
       {/* Links */}
-      <div className="links w-32 font-semibold ">
+      <div className="links w-fit sm:w-32 font-semibold text-center">
         <ul className="flex flex-col gap-1">
           <li>
             {/* <a href="/home"
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
               >Home</a> */}
-            <div 
-              onClick={() => {goto("home")}}
+            <div
+              onClick={() => { goto("home") }}
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
             >
               Home
@@ -64,8 +65,8 @@ const Footer = () => {
             {/* <a href="/products"
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
             >Products</a>  */}
-            <div 
-              onClick={() => {goto("products")}}
+            <div
+              onClick={() => { goto("products") }}
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
             >
               Products
@@ -75,16 +76,16 @@ const Footer = () => {
             {/* <a href="/categories"
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100"
             >Categories</a> */}
-            <div 
-              onClick={() => {goto("categories")}}
+            <div
+              onClick={() => { goto("categories") }}
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
             >
               Categories
             </div>
           </li>
           <li>
-            <div 
-              onClick={() => {goto("about")}}
+            <div
+              onClick={() => { goto("about") }}
               className="px-1 rounded-md hover:bg-primary/20 hover:text-secondary transition-all duration-100 cursor-pointer"
             >
               About
@@ -95,7 +96,7 @@ const Footer = () => {
 
       {/* Socials */}
       <div className="socials">
-        <div className="w-32 center-items items-start flex-col gap-2">
+        <div className="w-fit sm:w-32 center-items items-start sm:flex-col flex-row gap-2">
           {/* icon 1 */}
           <a href={linkedinLink} target="_blank"
             className="group flex gap-1 transition-all duration-300 cursor-pointer"
@@ -104,9 +105,11 @@ const Footer = () => {
               className="bg-[#0077b5] rounded-lg p-1 text-white hover:bg-[#0077b5]/90 transition-all duration-100 ">
               <FaLinkedinIn size={20} className="" />
             </div>
-            <span className="text-[#0077b5] font-semibold w-0 group-hover:w-full transition-all duration-300 overflow-hidden flex ">
-              LinkedIn <MdArrowOutward size={14} />
-            </span>
+            <div className="hidden items-center sm:flex">
+              <span className="text-[#0077b5] font-semibold w-0 group-hover:w-full transition-all duration-300 overflow-hidden flex ">
+                LinkedIn <MdArrowOutward size={14} />
+              </span>
+            </div>
           </a>
 
           {/* icon 2 */}
@@ -118,9 +121,11 @@ const Footer = () => {
             >
               <FaGithub size={20} />
             </div>
-            <span className="text-[#181717] font-semibold w-0 group-hover:w-full transition-all duration-300 overflow-hidden flex ">
-              Github <MdArrowOutward size={14} />
-            </span>
+            <div className="hidden items-center sm:flex">
+              <span className="text-[#181717] font-semibold w-0 group-hover:w-full transition-all duration-300 overflow-hidden flex ">
+                Github <MdArrowOutward size={14} />
+              </span>
+            </div>
           </a>
 
           {/* icon 3 */}
@@ -132,9 +137,11 @@ const Footer = () => {
             >
               <FaInstagram size={20} />
             </div>
-            <span className="text-[#f33b78] font-semibold w-0 group-hover:w-full transition-all duration-300 overflow-hidden flex ">
-              Instagram <MdArrowOutward size={14} />
-            </span>
+            <div className="hidden items-center sm:flex">
+              <span className="text-[#f33b78] font-semibold w-0 group-hover:w-full transition-all duration-300 overflow-hidden flex ">
+                Instagram <MdArrowOutward size={14} />
+              </span>
+            </div>
           </a>
         </div>
       </div>
