@@ -18,7 +18,7 @@ const CartDrawer: React.FC = () => {
 
     return (
         <Drawer title="Cart" open={open} placement="right" onClose={() => setOpen(false)}
-            className=""
+            className="sm:w-auto min-w-full absolute right-0"
         >
             <div className="w-full h-full m-0 flex flex-col gap-3">
                 <ul className="overflow-y-auto">

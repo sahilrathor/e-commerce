@@ -51,7 +51,7 @@ const SearchBar = () => {
 
     return (
         <form onSubmit={(e) => { e.preventDefault(); handleSearch();}}
-            className={`h-8 bg-white flex justify-between items-center gap-1 px-2 py-0.5 cursor-pointer rounded-full tracking-wider w-56 hover:w-80 focus:w-80 transition-all duration-300 ${search ? 'w-80' : 'w-56'} absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2`}
+            className={`h-8 bg-white flex justify-between items-center gap-1 px-2 py-0.5 cursor-pointer rounded-full tracking-wider w-56 hover:w-80 focus:w-80 transition-all duration-300 ${search ? 'sm:w-80' : 'sm:w-56'} w-fit absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2`}
         >
             <Dropdown
                 menu={{ items: suggestions }}

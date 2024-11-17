@@ -35,14 +35,13 @@ const Login: React.FC<LoginProps> = ({ onForgetPassword, onSignup }) => {
             return;
         }
 
-        setFormData({
-            userName: formData.userName.trim(),
-            password: formData.password.trim(),
-            rememberMe: formData.rememberMe
-        })
 
         try {
-            const response = await login(formData); 
+            const response = await login({
+                userName: formData.userName.trim(),
+                password: formData.password.trim(),
+                rememberMe: formData.rememberMe
+            }); 
             if (response) {
                 setIsAuthenticated(true)
                 navigate('/home');

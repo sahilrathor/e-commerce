@@ -1,25 +1,28 @@
 import { Dropdown } from 'antd';
-import logo from '../../assets/logo.png';
 import { useAppInfo } from '../../stores/app-info'
 import UserProfileBtn from '../buttons/UserProfileBtn';
 import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from '../SearchBar';
+import { ItemType } from 'antd/es/menu/interface';
+import { MenuOutlined } from '@ant-design/icons';
 
 
 
 
 const Navbar = () => {
   const navigate = useNavigate()
-  
+
   const NavLinks = [
     {
-      name: 'Home',
+      label: 'Home',
+      key: '1',
       path: '/',
     },
     {
-      name: 'Products',
+      label: 'Products',
+      key: '2',
       // path: '/products',
-      dropdown: [
+      children: [
         {
           label: <p onClick={() => navigate('/products/electronics')}>Electronics</p>,
           key: '1',
@@ -39,18 +42,23 @@ const Navbar = () => {
       ],
     },
     {
-      name: <Link to='/about'>About</Link>,
+      label: <Link to='/about'>About</Link>,
+      key: '3',
       path: '/about',
     },
   ]
 
   const { name } = useAppInfo()
   return (
-    <nav className='w-full h-14 bg-gray-100 text-slate-800 px-10 flex items-center justify-between rounded-b-sm relative'>
+    <nav className='w-full h-14 bg-gray-100 text-slate-800 px-5 sm:px-10 flex items-center justify-between rounded-b-sm relative'>
       <div className='flex items-center gap-5'>
         {/* logo */}
         <h1 className='text-2xl font-semibold flex items-center gap-1'>
-          <img src={logo} alt="logo" className='block sm:hidden w-10 h-10 drop-shadow-lg' />
+          <div className="items-center gap-1 flex sm:hidden drop-shadow-lg">
+            <Dropdown menu={{ items: NavLinks as ItemType[] }}>
+              <MenuOutlined size={20} />
+            </Dropdown>
+          </div>
           <span
             className='sm:block hidden text-2xl md:text-3xl font-semibold text-primary tracking-wider drop-shadow-lg'
           >
@@ -64,12 +72,12 @@ const Navbar = () => {
             <li key={index}
               className='text-sm font-semibold  px-1 py-0.5 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all duration-300 cursor-pointer'
             >
-              {item.dropdown ? (
-                <Dropdown menu={{ items: item.dropdown }} placement="bottomLeft">
-                  <span className='cursor-pointer'>{item.name}</span>
+              {item.children ? (
+                <Dropdown menu={{ items: item.children }} placement="bottomLeft">
+                  <span className='cursor-pointer'>{item.label}</span>
                 </Dropdown>
               ) : (
-                <p onClick={() => navigate(item.path)}>{item.name}</p>
+                <p onClick={() => navigate(item.path)}>{item.label}</p>
               )}
             </li>
           ))}
@@ -78,7 +86,7 @@ const Navbar = () => {
 
       {/* Search */}
       <SearchBar />
-      
+
 
       <UserProfileBtn />
     </nav>
