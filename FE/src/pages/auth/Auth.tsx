@@ -53,8 +53,8 @@ const Auth = () => {
         //         </div>
         //     </div>
         // </div>
-        <div id="login-container" className='w-full h-screen bg-emerald-700 center-items'>
-            <div className='h-screen sm:h-auto w-full sm:w-96 py-5 px-10 sm:rounded-3xl bg-slate-100 center-items flex-col gap-5'>
+        <div id="login-container" className='w-full h-[100dvh] bg-emerald-700 center-items'>
+            <div className='h-auto sm:h-auto w-full sm:w-96 py-5 px-10 sm:rounded-3xl bg-slate-100 center-items flex-col gap-5'>
                 <h1 className='login-head  relative w-fit mx-auto px-2 py-0'>
                     <p className='text-2xl font-bold drop-shadow-lg text-emerald-600'>
                         {isLogin && "LOG IN"}
